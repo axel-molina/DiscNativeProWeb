@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "next build && cd out && git init && git checkout -B gh-pages && git add -A && git commit -m 'deploy' && git push -f https://github.com/axel-molina/DiscNativeProWeb.git gh-pages && rm -rf .git"
   },
   "dependencies": {
     "clsx": "^2.1.1",
