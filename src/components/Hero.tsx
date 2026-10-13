@@ -16,11 +16,13 @@ import {
   Laptop,
   Smartphone
 } from "lucide-react";
-import { detectUserOS, OS_DOWNLOADS, OperatingSystem } from "@/lib/detectOS";
+import { detectUserOS, OS_DOWNLOADS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
+import MacInstructionsModal from "@/components/MacInstructionsModal";
 
 export default function Hero() {
   const [os, setOs] = useState<OperatingSystem>("macos");
   const [copiedClone, setCopiedClone] = useState(false);
+  const [isMacModalOpen, setIsMacModalOpen] = useState(false);
 
   useEffect(() => {
     setOs(detectUserOS());
@@ -104,31 +106,67 @@ export default function Hero() {
           </div>
 
           {/* Direct Download & Action CTAs */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-xl">
-            {/* Primary Download for Detected OS */}
-            <a
-              href="#downloads"
-              className="w-full sm:w-auto flex-1 flex items-center justify-center gap-3 bg-acid-500 hover:bg-acid-400 text-obsidian-950 font-black text-base sm:text-lg px-8 py-4 rounded-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_35px_rgba(204,255,0,0.35)]"
-            >
-              <Download className="w-5 h-5 stroke-[2.5]" />
-              <div className="text-left">
-                <span className="block text-xs uppercase tracking-wider font-bold text-obsidian-900/80">
-                  Descarga Directa
-                </span>
-                <span>Descargar para {currentOS.name}</span>
-              </div>
-            </a>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 w-full max-w-xl">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+              {/* Primary Download for Detected OS / Desktop CTA on mobile */}
+              {isMobileOS(os) ? (
+                <a
+                  href="#downloads"
+                  className="w-full sm:w-auto flex-1 flex items-center justify-center gap-3 bg-acid-500 hover:bg-acid-400 text-obsidian-950 font-black text-base sm:text-lg px-8 py-4 rounded-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_35px_rgba(204,255,0,0.35)]"
+                >
+                  <Download className="w-5 h-5 stroke-[2.5]" />
+                  <div className="text-left">
+                    <span className="block text-xs uppercase tracking-wider font-bold text-obsidian-900/80">
+                      Software de Escritorio
+                    </span>
+                    <span>Descargar para Mac & PC</span>
+                  </div>
+                </a>
+              ) : (
+                <a
+                  href={currentOS.status === "available" ? currentOS.directUrl : "#downloads"}
+                  target={currentOS.status === "available" ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    if (os === "macos") setIsMacModalOpen(true);
+                  }}
+                  className="w-full sm:w-auto flex-1 flex items-center justify-center gap-3 bg-acid-500 hover:bg-acid-400 text-obsidian-950 font-black text-base sm:text-lg px-8 py-4 rounded-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_35px_rgba(204,255,0,0.35)]"
+                >
+                  <Download className="w-5 h-5 stroke-[2.5]" />
+                  <div className="text-left">
+                    <span className="block text-xs uppercase tracking-wider font-bold text-obsidian-900/80">
+                      Descarga Inmediata ({currentOS.filename})
+                    </span>
+                    <span>Descargar para {currentOS.name}</span>
+                  </div>
+                </a>
+              )}
 
-            {/* GitHub Repo Button */}
-            <a
-              href="https://github.com/axel-molina/DiscNativePro"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto flex items-center justify-center gap-2.5 bg-obsidian-850 hover:bg-obsidian-800 text-zinc-200 border border-white/10 hover:border-white/20 font-bold px-6 py-4 rounded-2xl transition-all text-base"
-            >
-              <Github className="w-5 h-5" />
-              <span>Ver en GitHub</span>
-            </a>
+              {/* GitHub Repo Button */}
+              <a
+                href="https://github.com/axel-molina/DiscNativePro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto flex items-center justify-center gap-2.5 bg-obsidian-850 hover:bg-obsidian-800 text-zinc-200 border border-white/10 hover:border-white/20 font-bold px-6 py-4 rounded-2xl transition-all text-base"
+              >
+                <Github className="w-5 h-5" />
+                <span>Ver en GitHub</span>
+              </a>
+            </div>
+
+            {isMobileOS(os) ? (
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900/90 border border-white/10 text-xs text-zinc-300 font-mono mt-1 text-center">
+                <Smartphone className="w-3.5 h-3.5 text-acid-400 shrink-0" />
+                <span>Versión móvil nativa (iOS & Android) en desarrollo activo</span>
+              </div>
+            ) : (
+              <a
+                href="#downloads"
+                className="text-xs font-mono text-zinc-400 hover:text-white transition-colors underline underline-offset-4"
+              >
+                ¿Usas otro sistema operativo? Ver todas las descargas
+              </a>
+            )}
           </div>
 
           {/* Quick Clone Snippet */}
@@ -215,6 +253,11 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      {/* Mac First-Launch Helper Modal */}
+      <MacInstructionsModal 
+        isOpen={isMacModalOpen} 
+        onClose={() => setIsMacModalOpen(false)} 
+      />
     </section>
   );
 }

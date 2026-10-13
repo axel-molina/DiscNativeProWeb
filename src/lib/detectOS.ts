@@ -111,3 +111,7 @@ export function detectUserOS(): OperatingSystem {
 
   return "windows";
 }
+
+export function isMobileOS(os: OperatingSystem): boolean {
+  return os === "ios" || os === "android";
+}

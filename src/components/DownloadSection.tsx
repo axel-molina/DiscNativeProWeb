@@ -15,17 +15,23 @@ import {
   FolderArchive,
   AlertCircle
 } from "lucide-react";
-import { detectUserOS, OS_DOWNLOADS, OperatingSystem } from "@/lib/detectOS";
+import { detectUserOS, OS_DOWNLOADS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
+import MacInstructionsModal from "@/components/MacInstructionsModal";
 
 export default function DownloadSection() {
   const [detectedOs, setDetectedOs] = useState<OperatingSystem>("macos");
   const [activeTab, setActiveTab] = useState<OperatingSystem>("macos");
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [isMacModalOpen, setIsMacModalOpen] = useState(false);
 
   useEffect(() => {
     const os = detectUserOS();
     setDetectedOs(os);
-    setActiveTab(os);
+    if (isMobileOS(os)) {
+      setActiveTab("macos");
+    } else {
+      setActiveTab(os);
+    }
   }, []);
 
   const copySnippet = (text: string, id: string) => {
@@ -112,23 +118,35 @@ cmake --build build --config Release --parallel`,
             Obtén <span className="text-acid-500">DiscNativePro</span> Hoy
           </h2>
           <p className="mt-4 text-base sm:text-lg text-zinc-400 leading-relaxed">
-            Descarga binarios precompilados directamente desde los artefactos automatizados de GitHub Actions o compila el código fuente para tu sistema.
+            Descarga binarios precompilados directamente desde las versiones oficiales publicadas en GitHub Releases o compila el código fuente para tu sistema.
           </p>
 
           {/* Detected OS indicator */}
           <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-obsidian-900 border border-white/10 text-xs font-mono text-zinc-300">
             <span className="w-2 h-2 rounded-full bg-acid-500 animate-pulse" />
             <span>Sistema detectado:</span>
-            <strong className="text-white uppercase">{detectedOs}</strong>
+            <strong className="text-white uppercase">
+              {isMobileOS(detectedOs) ? `${detectedOs} (Móvil)` : detectedOs}
+            </strong>
           </div>
         </div>
+
+        {/* Mobile Info Alert if browsing from smartphone/tablet */}
+        {isMobileOS(detectedOs) && (
+          <div className="max-w-2xl mx-auto mb-8 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start sm:items-center gap-3 text-xs sm:text-sm text-amber-200">
+            <Smartphone className="w-5 h-5 text-amber-400 shrink-0 mt-0.5 sm:mt-0" />
+            <p>
+              Estás navegando desde un dispositivo móvil (<strong>{detectedOs.toUpperCase()}</strong>). DiscNativePro es software nativo para macOS, Windows y Linux. Puedes explorar las descargas para tu ordenador a continuación.
+            </p>
+          </div>
+        )}
 
         {/* Platform Selector Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
           {platforms.map((p) => {
             const Icon = p.icon;
             const isSelected = activeTab === p.id;
-            const isDetected = detectedOs === p.id;
+            const isDetected = detectedOs === p.id || (isMobileOS(detectedOs) && (p.id as string) === "mobile");
 
             return (
               <button
@@ -187,6 +205,9 @@ cmake --build build --config Release --parallel`,
                     href={currentPlatform.downloadUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      if (currentPlatform.id === "macos") setIsMacModalOpen(true);
+                    }}
                     className="w-full flex items-center justify-center gap-3 bg-acid-500 hover:bg-acid-400 text-obsidian-950 font-black text-base px-8 py-4 rounded-2xl transition-all shadow-xl shadow-acid-500/20 transform active:scale-95"
                   >
                     <Download className="w-5 h-5 stroke-[2.5]" />
@@ -274,6 +295,11 @@ cmake --build build --config Release --parallel`,
           </div>
         </div>
       </div>
+      {/* Mac First-Launch Helper Modal */}
+      <MacInstructionsModal 
+        isOpen={isMacModalOpen} 
+        onClose={() => setIsMacModalOpen(false)} 
+      />
     </section>
   );
 }

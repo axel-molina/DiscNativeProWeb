@@ -145,12 +145,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/axel-molina/DiscNativePro/actions"
+                  href="https://github.com/axel-molina/DiscNativePro/releases"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors flex items-center gap-1"
                 >
-                  <span>Builds Automatizados</span>
+                  <span>Versiones & Releases</span>
                   <ExternalLink className="w-3 h-3 text-zinc-500" />
                 </a>
               </li>

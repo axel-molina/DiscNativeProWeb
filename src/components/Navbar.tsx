@@ -16,7 +16,7 @@ import {
   Cpu,
   Coffee 
 } from "lucide-react";
-import { detectUserOS, OS_DOWNLOADS, OperatingSystem } from "@/lib/detectOS";
+import { detectUserOS, OS_DOWNLOADS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
 
 export default function Navbar() {
   const [os, setOs] = useState<OperatingSystem>("macos");
@@ -150,8 +150,14 @@ export default function Navbar() {
                 className="flex items-center gap-2 bg-acid-500 hover:bg-acid-400 text-obsidian-950 font-bold px-3.5 xl:px-4 py-2.5 rounded-xl text-xs xl:text-sm transition-all transform active:scale-95 shadow-[0_0_20px_rgba(204,255,0,0.25)] hover:shadow-[0_0_30px_rgba(204,255,0,0.4)] whitespace-nowrap shrink-0"
               >
                 <Download className="w-4 h-4 stroke-[2.5] shrink-0" />
-                <span className="hidden xl:inline">Descargar ({osInfo.name})</span>
-                <span className="inline xl:hidden">Descargar</span>
+                {isMobileOS(os) ? (
+                  <span>Descargas (Mac & PC)</span>
+                ) : (
+                  <>
+                    <span className="hidden xl:inline">Descargar ({osInfo.name})</span>
+                    <span className="inline xl:hidden">Descargar</span>
+                  </>
+                )}
               </a>
             </div>
 
@@ -218,7 +224,7 @@ export default function Navbar() {
                 className="flex items-center justify-center gap-2 bg-acid-500 text-obsidian-950 font-bold px-4 py-3 rounded-xl text-center"
               >
                 <Download className="w-4 h-4" />
-                Descargar para {osInfo.name}
+                {isMobileOS(os) ? "Descargas (Mac & PC)" : `Descargar para ${osInfo.name}`}
               </a>
               <a
                 href="https://cafecito.app/discnativepro"
