@@ -62,10 +62,10 @@ open build/DiscNativePro_artefacts/Release/DiscNativePro.app`,
       name: "Windows",
       arch: "x64 (Windows 10 / 11)",
       req: "Visual Studio C++ Runtime & WebView2",
-      filename: "DiscNativePro-Windows-x64.zip",
-      downloadUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-Windows-x64.zip",
+      filename: "DiscNativePro-Windows-x64-Setup.exe",
+      downloadUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-Windows-x64-Setup.exe",
       icon: Monitor,
-      badge: "64-Bit Release",
+      badge: "Instalador Setup .exe",
       cliInstructions: `# Compilación en Windows (PowerShell)
 git clone https://github.com/axel-molina/DiscNativePro.git
 cd DiscNativePro
