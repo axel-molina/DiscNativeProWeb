@@ -13,7 +13,8 @@ import {
   Github, 
   Layers, 
   FolderArchive,
-  AlertCircle
+  AlertCircle,
+  RefreshCw
 } from "lucide-react";
 import { detectUserOS, OS_DOWNLOADS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
 import MacInstructionsModal from "@/components/MacInstructionsModal";
@@ -61,11 +62,11 @@ open build/DiscNativePro_artefacts/Release/DiscNativePro.app`,
       id: "windows" as OperatingSystem,
       name: "Windows",
       arch: "x64 (Windows 10 / 11)",
-      req: "Visual Studio C++ Runtime & WebView2",
+      req: "Windows 10 / 11 (64-bit) • Asistente oficial Inno Setup",
       filename: "DiscNativePro-Windows-x64-Setup.exe",
       downloadUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-Windows-x64-Setup.exe",
       icon: Monitor,
-      badge: "Instalador Setup .exe",
+      badge: "Instalador Oficial Setup .exe",
       cliInstructions: `# Compilación en Windows (PowerShell)
 git clone https://github.com/axel-molina/DiscNativePro.git
 cd DiscNativePro
@@ -222,8 +223,19 @@ cmake --build build --config Release --parallel`,
                   <div className="flex items-center gap-2 text-zinc-500 text-[11px] font-mono">
                     <AlertCircle className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
                     <span>
-                      Binarios compilados automáticamente en cada versión publicada.
+                      {currentPlatform.id === "windows"
+                        ? "Instalador oficial con asistente Inno Setup y accesos directos de escritorio."
+                        : "Binarios compilados automáticamente para cada versión publicada."}
                     </span>
+                  </div>
+
+                  {/* In-App Auto-Updater callout */}
+                  <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 flex items-start gap-2.5 text-xs text-zinc-400">
+                    <RefreshCw className="w-4 h-4 text-acid-400 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-zinc-200 block font-semibold">Actualizador In-App Integrado</strong>
+                      Una vez instalada la app, no necesitas volver a la web. DiscNativePro detecta automáticamente nuevas versiones de GitHub al iniciar y descarga la actualización con un clic.
+                    </div>
                   </div>
                 </div>
               ) : (

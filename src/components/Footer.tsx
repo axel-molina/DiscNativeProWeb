@@ -39,7 +39,7 @@ export default function Footer() {
             </div>
 
             <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed max-w-sm">
-              Software DJ profesional de código abierto para macOS, Windows y Linux. Desarrollado en C++20 y JUCE 8 con latencia ultrabaja, integración de video con YouTube y recomendaciones inteligentes de sesión.
+              Suite DJ profesional v1.1.1 de código abierto para macOS, Windows y Linux. Desarrollada en C++20 y JUCE 8 con separación de STEMS en vivo, Sampler Launchpad, YouTube Video DJ, SoundCloud, biblioteca USB y soporte para controladoras MIDI.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -61,17 +61,27 @@ export default function Footer() {
           {/* Links: Software & Modos */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-white">
-              Software
+              Herramientas
             </h4>
             <ul className="space-y-2 text-xs font-mono">
+              <li>
+                <a href="#features" className="hover:text-acid-400 transition-colors">
+                  Panel de STEMS & Sampler
+                </a>
+              </li>
+              <li>
+                <a href="#features" className="hover:text-acid-400 transition-colors">
+                  SoundCloud & Pendrives USB
+                </a>
+              </li>
               <li>
                 <a href="#youtube-dj" className="hover:text-acid-400 transition-colors">
                   Video DJ con YouTube
                 </a>
               </li>
               <li>
-                <a href="#features" className="hover:text-acid-400 transition-colors">
-                  Motor AutoMix & BPM
+                <a href="#ai-smart-match" className="hover:text-acid-400 transition-colors">
+                  AI Smart Match
                 </a>
               </li>
             </ul>
@@ -85,12 +95,12 @@ export default function Footer() {
             <ul className="space-y-2 text-xs font-mono">
               <li>
                 <a href="#downloads" className="hover:text-white transition-colors">
-                  macOS (Apple Silicon & Intel)
+                  Windows 10 / 11 (Setup.exe Oficial)
                 </a>
               </li>
               <li>
                 <a href="#downloads" className="hover:text-white transition-colors">
-                  Windows 10 / 11 (64-bit)
+                  macOS (Apple Silicon & Intel)
                 </a>
               </li>
               <li>
@@ -176,7 +186,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} DiscNativePro Project. Código abierto disponible bajo licencia libre.
           </div>
           <div className="text-center sm:text-right text-[11px] text-zinc-600">
-            Aviso: DiscNativePro es un desarrollo independiente. Rekordbox, Serato y YouTube son marcas de sus respectivos titulares.
+            Aviso: DiscNativePro es un desarrollo independiente de código abierto. Pioneer DJ, DDJ, Hercules, Rekordbox, Serato, SoundCloud y YouTube son marcas de sus respectivos titulares.
           </div>
         </div>
       </div>

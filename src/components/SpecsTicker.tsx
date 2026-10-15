@@ -4,22 +4,26 @@ import React from "react";
 import { 
   Zap, 
   Cpu, 
-  Flame, 
   Radio, 
-  CheckCircle2, 
   Code2, 
-  Activity, 
-  Sparkles 
+  Sparkles,
+  Sliders,
+  Layers,
+  Download,
+  RefreshCw
 } from "lucide-react";
 
 export default function SpecsTicker() {
   const specs = [
-    { label: "LATENCIA MOTOR", value: "0 ms Overhead (C++20)", icon: Zap },
-    { label: "INDEX YOUTUBE", value: "0.2 ms Respuesta", icon: Radio },
-    { label: "IA SMART MATCH", value: "Recomendaciones Contextuales", icon: Sparkles },
-    { label: "ESCANEO ARMÓNICO", value: "Camelot Wheel & Key", icon: Activity },
-    { label: "LICENCIA", value: "100% Código Abierto", icon: Code2 },
-    { label: "DRIVERS NATIVOS", value: "CoreAudio / ASIO / ALSA", icon: Cpu },
+    { label: "VERSIÓN", value: "v1.1.1 Estable", icon: Code2 },
+    { label: "STEMS EN VIVO", value: "Cortes Kill & Solo por Deck", icon: Sliders },
+    { label: "SAMPLER PADS", value: "8 Triggers One-Shot", icon: Layers },
+    { label: "FUENTES UNIFICADAS", value: "Local + USB + YouTube + SoundCloud", icon: Radio },
+    { label: "HARDWARE READY", value: "Pioneer DDJ, Hercules & MIDI USB", icon: Cpu },
+    { label: "INSTALADOR WINDOWS", value: "Setup.exe con Asistente", icon: Download },
+    { label: "IN-APP UPDATER", value: "Auto-Update Silencioso", icon: RefreshCw },
+    { label: "LATENCIA MOTOR", value: "<3 ms (C++20 & JUCE 8)", icon: Zap },
+    { label: "IA SMART MATCH", value: "Multi-Proveedor Contextual", icon: Sparkles },
   ];
 
   return (

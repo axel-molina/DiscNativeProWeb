@@ -4,13 +4,18 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "DiscNativePro — Software DJ Nativo de Alto Rendimiento",
   description:
-    "Software DJ profesional de código abierto construido en C++20 y JUCE 8. Latencia ultrabaja, integración de video con YouTube, recomendaciones de pistas por IA, AutoMix y análisis armónico.",
+    "Software DJ profesional de código abierto v1.1.1 en C++20 y JUCE 8. Separación de STEMS en vivo, Sampler Launchpad, YouTube Video DJ, SoundCloud, biblioteca USB, AutoMix inteligente y controladoras MIDI USB.",
   keywords: [
     "DJ Software",
     "DiscNativePro",
     "Open Source DJ",
+    "STEMS DJ",
+    "DJ Sampler",
+    "SoundCloud DJ",
+    "USB DJ Library",
     "JUCE 8",
     "C++20",
+    "MIDI DJ Controller",
     "AI Smart Match",
     "Camelot Wheel",
     "YouTube DJ",

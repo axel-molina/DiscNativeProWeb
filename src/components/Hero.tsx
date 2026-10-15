@@ -14,7 +14,8 @@ import {
   Sliders, 
   Monitor,
   Laptop,
-  Smartphone
+  Smartphone,
+  ShieldCheck
 } from "lucide-react";
 import { detectUserOS, OS_DOWNLOADS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
 import MacInstructionsModal from "@/components/MacInstructionsModal";
@@ -91,17 +92,20 @@ export default function Hero() {
 
           {/* Subtitle */}
           <p className="mt-8 text-lg sm:text-xl text-zinc-400 font-normal max-w-3xl leading-relaxed">
-            <strong className="text-zinc-200 font-semibold">DiscNativePro</strong> es el software DJ de alto rendimiento diseñado desde cero en C++20 para <span className="text-zinc-200">macOS, Windows y Linux</span>. Olvídate de aplicaciones web o capas de Electron pesadas: disfruta de mezcla de video con YouTube, recomendaciones inteligentes por IA, AutoMix y escaneo armónico Camelot en tiempo real.
+            <strong className="text-zinc-200 font-semibold">DiscNativePro</strong> es la suite DJ de alto rendimiento desarrollada en C++20 y JUCE 8 para <span className="text-zinc-200">macOS, Windows y Linux</span>. Olvídate de capas lentas de Electron o navegadores: disfruta de <strong className="text-zinc-200">separación de STEMS en vivo</strong>, sampler launchpad de 8 pads, integración con <strong className="text-zinc-200">SoundCloud & YouTube</strong>, exploración nativa de <strong className="text-zinc-200">pendrives USB</strong>, AutoMix inteligente y controladoras MIDI físicas.
           </p>
 
-          {/* Transparent Beta Notice (Anti-slop principle) */}
-          <div className="mt-8 w-full max-w-2xl bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 text-left flex items-start gap-3 backdrop-blur-sm">
-            <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-            <div className="text-xs sm:text-sm text-amber-200/90 leading-relaxed">
-              <strong className="font-semibold text-amber-300 block mb-0.5">
-                Software en desarrollo activo (Beta Abierta)
-              </strong>
-              DiscNativePro es un proyecto de código abierto en constante evolución, construido y asistido por Inteligencia Artificial. Cuenta con funcionalidades activas pero también con bugs conocidos y optimizaciones en progreso. Tu feedback y tus reportes de incidencias en GitHub son el motor que impulsa cada versión.
+          {/* Release v1.1.1 Status Notice */}
+          <div className="mt-8 w-full max-w-2xl bg-obsidian-900/90 border border-emerald-500/30 rounded-2xl p-4 text-left flex items-start gap-3 backdrop-blur-sm shadow-lg shadow-emerald-500/5">
+            <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+            <div className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+              <div className="flex flex-wrap items-center gap-2 mb-1">
+                <span className="font-bold text-emerald-400 font-mono text-xs uppercase bg-emerald-500/15 px-2 py-0.5 rounded border border-emerald-500/30">
+                  VERSIÓN v1.1.1 DISPONIBLE
+                </span>
+                <span className="text-zinc-400 text-xs font-mono">100% Open Source &bull; Sin Telemetría</span>
+              </div>
+              DiscNativePro es un proyecto de código abierto construido con el framework JUCE 8. Cuenta con instalador oficial con asistente para Windows (<span className="text-zinc-200 font-mono font-semibold">Setup.exe</span>), binarios universales para macOS, tarball para Linux y sistema de auto-actualización silencioso integrado directamente en la app.
             </div>
           </div>
 
@@ -220,7 +224,7 @@ export default function Hero() {
                   <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
                   <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
                   <span className="text-xs font-mono font-bold text-zinc-300 ml-2">
-                    DiscNativePro v0.4.2
+                    DiscNativePro v1.1.1
                   </span>
                 </div>
 

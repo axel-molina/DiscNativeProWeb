@@ -14,7 +14,8 @@ import {
   Layers, 
   Sparkles,
   Cpu,
-  Coffee 
+  Coffee,
+  Sliders
 } from "lucide-react";
 import { detectUserOS, OS_DOWNLOADS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
 
@@ -42,11 +43,11 @@ export default function Navbar() {
       <div className="bg-obsidian-900 border-b border-white/5 py-1.5 px-4 text-xs font-mono text-zinc-400">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 overflow-hidden">
           <div className="flex items-center gap-2 min-w-0">
-            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 whitespace-nowrap shrink-0">
-              BETA ACTIVA v0.4.2
+            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 whitespace-nowrap shrink-0">
+              VERSIÓN v1.1.1 (ESTABLE)
             </span>
             <span className="text-zinc-400 hidden md:inline truncate">
-              Software libre en desarrollo continuo. Reporta bugs o colabora en GitHub.
+              Suite DJ nativa en C++20. STEMS en vivo, Sampler, SoundCloud, Pendrives USB y AutoMix.
             </span>
           </div>
           <div className="flex items-center gap-3 text-[11px] whitespace-nowrap shrink-0">
@@ -101,24 +102,25 @@ export default function Navbar() {
             {/* Desktop Navigation Links (Single-Line Guaranteed with whitespace-nowrap) */}
             <nav className="hidden lg:flex items-center gap-2 xl:gap-3.5 2xl:gap-5 text-xs xl:text-sm font-medium text-zinc-300 ml-2 xl:ml-6 whitespace-nowrap">
               <a
-                href="#ai-smart-match"
+                href="#features"
                 className="hover:text-white transition-colors flex items-center gap-1 text-acid-400 font-bold whitespace-nowrap shrink-0 px-2 py-0.5 rounded-lg bg-acid-500/10 border border-acid-500/20 hover:bg-acid-500/20"
               >
-                <Sparkles className="w-3.5 h-3.5 text-acid-400 shrink-0" />
+                <Sliders className="w-3.5 h-3.5 text-acid-400 shrink-0" />
+                <span>STEMS & Sampler</span>
+              </a>
+              <a
+                href="#ai-smart-match"
+                className="hover:text-white transition-colors flex items-center gap-1 whitespace-nowrap shrink-0 py-1"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-cyanDeck-400 shrink-0" />
                 <span>AI Match</span>
               </a>
               <a
                 href="#features"
-                className="hover:text-white transition-colors whitespace-nowrap shrink-0 py-1 hidden xl:inline-block"
-              >
-                Funciones
-              </a>
-              <a
-                href="#youtube-dj"
                 className="hover:text-white transition-colors flex items-center gap-1 whitespace-nowrap shrink-0 py-1"
               >
                 <Radio className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                <span>Video DJ</span>
+                <span>Fuentes & USB</span>
               </a>
             </nav>
 
