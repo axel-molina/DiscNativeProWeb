@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "DJ Software",
     "DiscNativePro",
     "Open Source DJ",
-    "STEMS DJ",
+    "DJ Effects FX",
     "DJ Sampler",
     "SoundCloud DJ",
     "USB DJ Library",

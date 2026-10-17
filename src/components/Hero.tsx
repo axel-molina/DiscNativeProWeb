@@ -94,7 +94,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <p className="mt-8 text-lg sm:text-xl text-zinc-400 font-normal max-w-3xl leading-relaxed">
-            <strong className="text-zinc-200 font-semibold">DiscNativePro</strong> es la suite DJ de alto rendimiento desarrollada en C++20 y JUCE 8 para <span className="text-zinc-200">macOS, Windows y Linux</span>. Olvídate de capas lentas de Electron o navegadores: disfruta de <strong className="text-zinc-200">separación de STEMS en vivo</strong>, sampler launchpad de 8 pads, integración con <strong className="text-zinc-200">SoundCloud & YouTube</strong>, exploración nativa de <strong className="text-zinc-200">pendrives USB</strong>, AutoMix inteligente y controladoras MIDI físicas.
+            <strong className="text-zinc-200 font-semibold">DiscNativePro</strong> es la suite DJ de alto rendimiento desarrollada en C++20 y JUCE 8 para <span className="text-zinc-200">macOS, Windows y Linux</span>. Olvídate de capas lentas de Electron o navegadores: disfruta de <strong className="text-zinc-200">rack de efectos FX multi-slot</strong>, sampler launchpad de 8 pads, integración con <strong className="text-zinc-200">SoundCloud & YouTube</strong>, exploración nativa de <strong className="text-zinc-200">pendrives USB</strong>, AutoMix inteligente y controladoras MIDI físicas.
           </p>
 
           {/* Release Status Notice */}

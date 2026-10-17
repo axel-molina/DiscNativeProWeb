@@ -108,7 +108,7 @@ export default function Navbar() {
                 className="hover:text-white transition-colors flex items-center gap-1 text-acid-400 font-bold whitespace-nowrap shrink-0 px-2 py-0.5 rounded-lg bg-acid-500/10 border border-acid-500/20 hover:bg-acid-500/20"
               >
                 <Sliders className="w-3.5 h-3.5 text-acid-400 shrink-0" />
-                <span>STEMS & Sampler</span>
+                <span>FX & Sampler</span>
               </a>
               <a
                 href="#ai-smart-match"

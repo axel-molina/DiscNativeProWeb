@@ -13,11 +13,11 @@ export default function ComparisonTable() {
       webDj: "Freemium con limitaciones",
     },
     {
-      feature: "Separación de STEMS en Tiempo Real",
-      discNative: "Incluido de fábrica (Kill & Solo por Deck)",
+      feature: "Rack de Efectos FX Multi-Slot",
+      discNative: "3 Slots por Deck con Modos Manual e Instant",
       discNativeHighlight: true,
-      commercial: "Bloqueado tras suscripción cara",
-      webDj: "Inexistente",
+      commercial: "Limitado o de pago en licencias Pro",
+      webDj: "Inexistente o básico",
     },
     {
       feature: "Fuentes de Biblioteca Unificadas",

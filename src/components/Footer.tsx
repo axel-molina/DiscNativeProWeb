@@ -70,7 +70,7 @@ export default function Footer() {
             <ul className="space-y-2 text-xs font-mono">
               <li>
                 <a href="#features" className="hover:text-acid-400 transition-colors">
-                  Panel de STEMS & Sampler
+                  Rack de Efectos FX & Sampler
                 </a>
               </li>
               <li>

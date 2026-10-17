@@ -21,19 +21,19 @@ import {
 export default function FeaturesGrid() {
   const coreFeatures = [
     {
-      id: "stems-live",
-      title: "Panel de STEMS: Separación de Pistas en Vivo",
+      id: "fx-rack",
+      title: "Rack de Efectos FX: 3 Slots por Deck",
       category: "PERFORMANCE CREATIVO",
-      badge: "Kill & Solo Instantáneo",
+      badge: "Modos Manual & Instant",
       accent: "from-acid-500/20 to-transparent",
       borderColor: "border-acid-500/30",
       tagColor: "text-acid-400 bg-acid-500/10 border-acid-500/20",
       description:
-        "Aísla o silencia en tiempo real Voz (Medios), Instrumental, Graves (Bass) y Batería (Drums) por cada deck. Diseñado para mashups, acapellas y transiciones impecables sin artefactos sonoros, latencia ni requerir costosas suscripciones mensuales de software comercial.",
+        "Procesamiento DSP de audio en tiempo real con 3 slots de efectos independientes por cada deck. Modula parámetros continuos con el potenciómetro Dry/Wet en modo Manual o dispara efectos rítmicos al compás en modo Instantáneo para drops y cortes en vivo.",
       points: [
-        "Cortes Kill y Solo independientes por banda para Deck 1 y Deck 2",
-        "Restauración instantánea de ganancias con memoria de perilla al soltar",
-        "Procesamiento nativo en C++20 con respuesta en tiempo real al milisegundo",
+        "Cadena dual de 3 procesadores de efectos por canal con medidor Dry/Wet",
+        "Modo Instantáneo para disparar builds, barridos y filtros al compás",
+        "Algoritmos de baja latencia ejecutados en punto flotante nativo en C++20",
       ],
       icon: Sliders,
     },

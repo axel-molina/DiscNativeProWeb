@@ -19,7 +19,7 @@ export default function SpecsTicker() {
 
   const specs = [
     { label: "VERSIÓN", value: `${latestVersion} Estable`, icon: Code2 },
-    { label: "STEMS EN VIVO", value: "Cortes Kill & Solo por Deck", icon: Sliders },
+    { label: "RACK DE EFECTOS", value: "3 Slots FX por Deck (Manual / Instant)", icon: Sliders },
     { label: "SAMPLER PADS", value: "8 Triggers One-Shot", icon: Layers },
     { label: "FUENTES UNIFICADAS", value: "Local + USB + YouTube + SoundCloud", icon: Radio },
     { label: "HARDWARE READY", value: "Pioneer DDJ, Hercules & MIDI USB", icon: Cpu },
