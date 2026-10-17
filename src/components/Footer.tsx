@@ -15,8 +15,11 @@ import {
   Monitor,
   Coffee
 } from "lucide-react";
+import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
 
 export default function Footer() {
+  const { latestVersion } = useReleaseDownloads();
+
   return (
     <footer className="bg-obsidian-950 border-t border-white/10 text-zinc-400 py-16 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,7 +42,7 @@ export default function Footer() {
             </div>
 
             <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed max-w-sm">
-              Suite DJ profesional v1.1.1 de código abierto para macOS, Windows y Linux. Desarrollada en C++20 y JUCE 8 con separación de STEMS en vivo, Sampler Launchpad, YouTube Video DJ, SoundCloud, biblioteca USB y soporte para controladoras MIDI.
+              Suite DJ profesional {latestVersion} de código abierto para macOS, Windows y Linux. Desarrollada en C++20 y JUCE 8 con Sampler Launchpad, YouTube Video DJ, SoundCloud, biblioteca USB, AutoMix inteligente y soporte para controladoras MIDI.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
