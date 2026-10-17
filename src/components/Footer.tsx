@@ -13,7 +13,8 @@ import {
   ExternalLink,
   Laptop,
   Monitor,
-  Coffee
+  Coffee,
+  ShieldCheck
 } from "lucide-react";
 import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
 
@@ -179,14 +180,30 @@ export default function Footer() {
                   <ExternalLink className="w-3 h-3 text-amber-400/70" />
                 </a>
               </li>
+              <li className="pt-2 border-t border-white/5">
+                <Link
+                  href="/legal"
+                  className="hover:text-acid-400 transition-colors flex items-center gap-1.5 text-zinc-300 font-medium"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 text-acid-400" />
+                  <span>Aviso Legal & Privacidad</span>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Disclaimer */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
-          <div>
-            &copy; {new Date().getFullYear()} DiscNativePro Project. Código abierto disponible bajo licencia libre.
+          <div className="flex flex-wrap items-center gap-2">
+            <span>&copy; {new Date().getFullYear()} DiscNativePro Project.</span>
+            <span>&bull;</span>
+            <Link
+              href="/legal"
+              className="text-zinc-400 hover:text-white underline underline-offset-4 transition-colors"
+            >
+              Privacidad y Términos de Uso
+            </Link>
           </div>
           <div className="text-center sm:text-right text-[11px] text-zinc-600">
             Aviso: DiscNativePro es un desarrollo independiente de código abierto. Pioneer DJ, DDJ, Hercules, Rekordbox, Serato, SoundCloud y YouTube son marcas de sus respectivos titulares.
