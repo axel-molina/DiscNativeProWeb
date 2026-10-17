@@ -14,7 +14,8 @@ import {
   Laptop,
   Monitor,
   Coffee,
-  ShieldCheck
+  ShieldCheck,
+  Youtube
 } from "lucide-react";
 import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
 
@@ -55,6 +56,15 @@ export default function Footer() {
                 title="GitHub Repo"
               >
                 <Github className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.youtube.com/@AxelCodeDev/shorts"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-obsidian-900 border border-white/10 hover:border-red-500/40 text-zinc-300 hover:text-red-500 transition-colors"
+                title="Canal de YouTube @AxelCodeDev"
+              >
+                <Youtube className="w-4 h-4" />
               </a>
               <span className="text-xs font-mono text-zinc-500">
                 Licencia Open Source comunitaria

@@ -5,6 +5,7 @@ import AiMatchShowcase from "@/components/AiMatchShowcase";
 import FeaturesGrid from "@/components/FeaturesGrid";
 import ComparisonTable from "@/components/ComparisonTable";
 import DownloadSection from "@/components/DownloadSection";
+import CreatorChannelSection from "@/components/CreatorChannelSection";
 import DonateSection from "@/components/DonateSection";
 import Footer from "@/components/Footer";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <FeaturesGrid />
       <ComparisonTable />
       <DownloadSection />
+      <CreatorChannelSection />
       <DonateSection />
       <Footer />
     </main>
