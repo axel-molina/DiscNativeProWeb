@@ -17,19 +17,21 @@ import {
   Smartphone,
   ShieldCheck
 } from "lucide-react";
-import { detectUserOS, OS_DOWNLOADS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
+import { detectUserOS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
+import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
 import MacInstructionsModal from "@/components/MacInstructionsModal";
 
 export default function Hero() {
   const [os, setOs] = useState<OperatingSystem>("macos");
   const [copiedClone, setCopiedClone] = useState(false);
   const [isMacModalOpen, setIsMacModalOpen] = useState(false);
+  const { downloads } = useReleaseDownloads();
 
   useEffect(() => {
     setOs(detectUserOS());
   }, []);
 
-  const currentOS = OS_DOWNLOADS[os] || OS_DOWNLOADS.windows;
+  const currentOS = downloads[os] || downloads.windows;
 
   const copyCloneCommand = () => {
     navigator.clipboard.writeText("git clone https://github.com/axel-molina/DiscNativePro.git");

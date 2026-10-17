@@ -16,7 +16,8 @@ import {
   AlertCircle,
   RefreshCw
 } from "lucide-react";
-import { detectUserOS, OS_DOWNLOADS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
+import { detectUserOS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
+import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
 import MacInstructionsModal from "@/components/MacInstructionsModal";
 
 export default function DownloadSection() {
@@ -24,6 +25,7 @@ export default function DownloadSection() {
   const [activeTab, setActiveTab] = useState<OperatingSystem>("macos");
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [isMacModalOpen, setIsMacModalOpen] = useState(false);
+  const { downloads } = useReleaseDownloads();
 
   useEffect(() => {
     const os = detectUserOS();
@@ -47,10 +49,10 @@ export default function DownloadSection() {
       name: "macOS",
       arch: "Apple Silicon & Intel (Universal)",
       req: "macOS 11.0 Big Sur o posterior",
-      filename: "DiscNativePro-macOS-Universal.zip",
-      downloadUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-macOS-Universal.zip",
+      filename: downloads.macos.filename,
+      downloadUrl: downloads.macos.directUrl,
       icon: Laptop,
-      badge: "Binario Universal",
+      badge: downloads.macos.badge,
       cliInstructions: `# Clonar y compilar en macOS
 git clone https://github.com/axel-molina/DiscNativePro.git
 cd DiscNativePro
@@ -63,10 +65,10 @@ open build/DiscNativePro_artefacts/Release/DiscNativePro.app`,
       name: "Windows",
       arch: "x64 (Windows 10 / 11)",
       req: "Windows 10 / 11 (64-bit) • Asistente oficial Inno Setup",
-      filename: "DiscNativePro-Windows-x64-Setup.exe",
-      downloadUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-Windows-x64-Setup.exe",
+      filename: downloads.windows.filename,
+      downloadUrl: downloads.windows.directUrl,
       icon: Monitor,
-      badge: "Instalador Oficial Setup .exe",
+      badge: downloads.windows.badge,
       cliInstructions: `# Compilación en Windows (PowerShell)
 git clone https://github.com/axel-molina/DiscNativePro.git
 cd DiscNativePro
@@ -79,10 +81,10 @@ cmake --build build --config Release --parallel`,
       name: "Linux",
       arch: "x86_64 (Ubuntu, Debian, Fedora)",
       req: "ALSA, WebKitGTK 4.1, OpenGL",
-      filename: "DiscNativePro-Linux-x64.tar.gz",
-      downloadUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-Linux-x64.tar.gz",
+      filename: downloads.linux.filename,
+      downloadUrl: downloads.linux.directUrl,
       icon: Terminal,
-      badge: "Tarball x64",
+      badge: downloads.linux.badge,
       cliInstructions: `# Dependencias y compilación en Ubuntu / Debian
 sudo apt-get update && sudo apt-get install -y build-essential cmake ninja-build libasound2-dev libwebkit2gtk-4.1-dev libglu1-mesa-dev
 git clone https://github.com/axel-molina/DiscNativePro.git
