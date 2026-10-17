@@ -17,12 +17,14 @@ import {
   Coffee,
   Sliders
 } from "lucide-react";
-import { detectUserOS, OS_DOWNLOADS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
+import { detectUserOS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
+import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
 
 export default function Navbar() {
   const [os, setOs] = useState<OperatingSystem>("macos");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { downloads, latestVersion } = useReleaseDownloads();
 
   useEffect(() => {
     setOs(detectUserOS());
@@ -35,7 +37,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const osInfo = OS_DOWNLOADS[os] || OS_DOWNLOADS.windows;
+  const osInfo = downloads[os] || downloads.windows;
 
   return (
     <>
@@ -44,10 +46,10 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 overflow-hidden">
           <div className="flex items-center gap-2 min-w-0">
             <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 whitespace-nowrap shrink-0">
-              VERSIÓN v1.1.1 (ESTABLE)
+              VERSIÓN {latestVersion} (ESTABLE)
             </span>
             <span className="text-zinc-400 hidden md:inline truncate">
-              Suite DJ nativa en C++20. STEMS en vivo, Sampler, SoundCloud, Pendrives USB y AutoMix.
+              Software libre en desarrollo continuo. Reporta bugs o colabora en GitHub.
             </span>
           </div>
           <div className="flex items-center gap-3 text-[11px] whitespace-nowrap shrink-0">

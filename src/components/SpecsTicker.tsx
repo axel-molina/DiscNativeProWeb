@@ -12,10 +12,13 @@ import {
   Download,
   RefreshCw
 } from "lucide-react";
+import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
 
 export default function SpecsTicker() {
+  const { latestVersion } = useReleaseDownloads();
+
   const specs = [
-    { label: "VERSIÓN", value: "v1.1.1 Estable", icon: Code2 },
+    { label: "VERSIÓN", value: `${latestVersion} Estable`, icon: Code2 },
     { label: "STEMS EN VIVO", value: "Cortes Kill & Solo por Deck", icon: Sliders },
     { label: "SAMPLER PADS", value: "8 Triggers One-Shot", icon: Layers },
     { label: "FUENTES UNIFICADAS", value: "Local + USB + YouTube + SoundCloud", icon: Radio },

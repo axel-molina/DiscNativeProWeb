@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { OS_DOWNLOADS, OSDownloadInfo, OperatingSystem } from "./detectOS";
 
 const GITHUB_REPO = "axel-molina/DiscNativePro";
-const CACHE_KEY = "dnp_release_downloads_v1";
+const CACHE_KEY = "dnp_release_downloads_v2";
 const CACHE_TTL_MS = 3 * 60 * 1000; // 3 minutos de caché
 
 interface CachedEntry {
@@ -14,6 +14,7 @@ interface CachedEntry {
 
 interface CachePayload {
   timestamp: number;
+  latestVersion: string;
   entries: Partial<Record<OperatingSystem, CachedEntry>>;
 }
 
@@ -30,6 +31,7 @@ interface GitHubRelease {
 
 export function useReleaseDownloads() {
   const [downloads, setDownloads] = useState<Record<OperatingSystem, OSDownloadInfo>>(OS_DOWNLOADS);
+  const [latestVersion, setLatestVersion] = useState<string>("v1.1.2");
   const [isResolved, setIsResolved] = useState(false);
 
   useEffect(() => {
@@ -42,6 +44,9 @@ export function useReleaseDownloads() {
         if (cachedStr) {
           const cached: CachePayload = JSON.parse(cachedStr);
           if (Date.now() - cached.timestamp < CACHE_TTL_MS) {
+            if (cached.latestVersion) {
+              setLatestVersion(cached.latestVersion);
+            }
             setDownloads((prev) => {
               const next = { ...prev };
               (Object.keys(cached.entries) as OperatingSystem[]).forEach((os) => {
@@ -61,7 +66,7 @@ export function useReleaseDownloads() {
           }
         }
       } catch {
-        // En entornos donde sessionStorage esté bloqueado, continuar normalmente
+        // En entornos con restricciones de almacenamiento, continuar
       }
 
       // 2. Consultar las releases públicas recientes en GitHub
@@ -80,6 +85,7 @@ export function useReleaseDownloads() {
         const releases: GitHubRelease[] = await res.json();
         if (!Array.isArray(releases) || releases.length === 0) return;
 
+        const resolvedVersion = releases.find((r) => !r.draft)?.tag_name || "v1.1.2";
         const resolved: Partial<Record<OperatingSystem, CachedEntry>> = {};
         const platforms: OperatingSystem[] = ["macos", "windows", "linux"];
 
@@ -99,6 +105,7 @@ export function useReleaseDownloads() {
         }
 
         if (isMounted) {
+          setLatestVersion(resolvedVersion);
           setDownloads((prev) => {
             const next = { ...prev };
             (Object.keys(resolved) as OperatingSystem[]).forEach((os) => {
@@ -121,6 +128,7 @@ export function useReleaseDownloads() {
             CACHE_KEY,
             JSON.stringify({
               timestamp: Date.now(),
+              latestVersion: resolvedVersion,
               entries: resolved,
             })
           );
@@ -139,5 +147,5 @@ export function useReleaseDownloads() {
     };
   }, []);
 
-  return { downloads, isResolved };
+  return { downloads, latestVersion, isResolved };
 }

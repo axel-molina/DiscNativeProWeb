@@ -25,7 +25,7 @@ export default function Hero() {
   const [os, setOs] = useState<OperatingSystem>("macos");
   const [copiedClone, setCopiedClone] = useState(false);
   const [isMacModalOpen, setIsMacModalOpen] = useState(false);
-  const { downloads } = useReleaseDownloads();
+  const { downloads, latestVersion } = useReleaseDownloads();
 
   useEffect(() => {
     setOs(detectUserOS());
@@ -103,7 +103,7 @@ export default function Hero() {
             <div className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
               <div className="flex flex-wrap items-center gap-2 mb-1">
                 <span className="font-bold text-emerald-400 font-mono text-xs uppercase bg-emerald-500/15 px-2 py-0.5 rounded border border-emerald-500/30">
-                  VERSIÓN v1.1.1 DISPONIBLE
+                  VERSIÓN {latestVersion} DISPONIBLE
                 </span>
                 <span className="text-zinc-400 text-xs font-mono">100% Open Source &bull; Sin Telemetría</span>
               </div>
@@ -226,7 +226,7 @@ export default function Hero() {
                   <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
                   <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
                   <span className="text-xs font-mono font-bold text-zinc-300 ml-2">
-                    DiscNativePro v1.1.1
+                    DiscNativePro {latestVersion}
                   </span>
                 </div>
 
