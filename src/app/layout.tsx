@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import MotionProvider from "@/components/MotionProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -67,7 +68,7 @@ export default function RootLayout({
             __html: `(function(){function rm(){var b=document.getElementById('nl-badge-frame')||document.getElementById('nl-hud-frame')||document.querySelector('iframe[title="Powered by Netlify"]');if(b)b.remove();var s=document.querySelector('script[data-nf-variant]');if(s)s.remove();}if(typeof window!=='undefined'){rm();window.addEventListener('DOMContentLoaded',rm);window.addEventListener('load',rm);var o=new MutationObserver(rm);if(document.body){o.observe(document.body,{childList:true,subtree:true});}else{document.addEventListener('DOMContentLoaded',function(){o.observe(document.body,{childList:true,subtree:true});});}}})();`,
           }}
         />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

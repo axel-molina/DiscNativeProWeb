@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { 
-  Radio, 
+import { motion } from "framer-motion";
+import {
+  Radio,
   Sparkles, 
   Activity, 
   Sliders, 
@@ -17,6 +18,7 @@ import {
   Usb,
   Music2
 } from "lucide-react";
+import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 
 export default function FeaturesGrid() {
   const coreFeatures = [
@@ -179,29 +181,44 @@ export default function FeaturesGrid() {
     <section id="features" className="py-24 sm:py-32 bg-obsidian-950 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/5 text-zinc-300 border border-white/10 mb-4">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16 sm:mb-20"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+        >
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/5 text-zinc-300 border border-white/10 mb-4">
             <Layers className="w-3.5 h-3.5 text-acid-400" />
             ARQUITECTURA & CARACTERÍSTICAS
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
+          </motion.div>
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
             Diseñado Para El Escenario, <br />
             <span className="text-acid-500">Compilado Para El Rendimiento</span>
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-zinc-400 leading-relaxed">
+          </motion.h2>
+          <motion.p variants={fadeUp} className="mt-4 text-base sm:text-lg text-zinc-400 leading-relaxed">
             Cada módulo de DiscNativePro fue desarrollado en C++ nativo utilizando el framework de audio profesional JUCE 8. Sin intermediarios, sin scripts lentos y con acceso directo a tu hardware de sonido.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+        >
           {coreFeatures.map((feat) => {
             const Icon = feat.icon;
             return (
-              <div
+              <motion.div
                 key={feat.id}
                 id={feat.id}
-                className={`bg-obsidian-900 border ${feat.borderColor} rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:bg-obsidian-850 transition-all duration-300 group hover:shadow-2xl hover:shadow-black/60 relative overflow-hidden`}
+                variants={fadeUp}
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                className={`bg-obsidian-900 border ${feat.borderColor} rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:bg-obsidian-850 transition-colors duration-300 group hover:shadow-2xl hover:shadow-black/60 relative overflow-hidden`}
               >
                 {/* Glow accent */}
                 <div
@@ -246,10 +263,10 @@ export default function FeaturesGrid() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

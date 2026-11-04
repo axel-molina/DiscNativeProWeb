@@ -1,5 +1,9 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 import { Coffee, Heart, ExternalLink, Sparkles, CheckCircle2 } from "lucide-react";
+import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 
 export default function DonateSection() {
   return (
@@ -10,7 +14,13 @@ export default function DonateSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-4xl mx-auto">
           {/* Main Card Container */}
-          <div className="bg-obsidian-900 border border-amber-500/20 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="bg-obsidian-900 border border-amber-500/20 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden"
+          >
             {/* Top decorative accent */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-400" />
 
@@ -30,16 +40,18 @@ export default function DonateSection() {
 
               {/* Direct CTA Button */}
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
+                <motion.a
                   href="https://cafecito.app/discnativepro"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-obsidian-950 font-black text-base sm:text-lg px-8 py-4 rounded-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_35px_rgba(245,158,11,0.35)]"
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-obsidian-950 font-black text-base sm:text-lg px-8 py-4 rounded-2xl transition-colors shadow-[0_0_35px_rgba(245,158,11,0.35)]"
                 >
                   <Coffee className="w-5 h-5 stroke-[2.5]" />
                   <span>Regalar un café en Cafecito</span>
                   <ExternalLink className="w-4 h-4 ml-0.5 opacity-80" />
-                </a>
+                </motion.a>
               </div>
 
               <span className="block mt-3 text-xs font-mono text-zinc-500">
@@ -48,8 +60,14 @@ export default function DonateSection() {
             </div>
 
             {/* Impact points */}
-            <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
-              <div className="p-4 rounded-2xl bg-obsidian-950/60 border border-white/5">
+            <motion.div
+              className="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-4 text-left"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewportOnce}
+            >
+              <motion.div variants={fadeUp} className="p-4 rounded-2xl bg-obsidian-950/60 border border-white/5">
                 <div className="flex items-center gap-2 text-amber-400 text-xs font-mono font-bold mb-1.5">
                   <Sparkles className="w-4 h-4" />
                   <span>Desarrollo Activo</span>
@@ -57,9 +75,9 @@ export default function DonateSection() {
                 <p className="text-xs text-zinc-400 leading-relaxed">
                   Corrección continua de errores y optimización del motor C++20 para máxima estabilidad en vivo.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="p-4 rounded-2xl bg-obsidian-950/60 border border-white/5">
+              <motion.div variants={fadeUp} className="p-4 rounded-2xl bg-obsidian-950/60 border border-white/5">
                 <div className="flex items-center gap-2 text-amber-400 text-xs font-mono font-bold mb-1.5">
                   <CheckCircle2 className="w-4 h-4" />
                   <span>Nuevas Funcionalidades</span>
@@ -67,9 +85,9 @@ export default function DonateSection() {
                 <p className="text-xs text-zinc-400 leading-relaxed">
                   Priorización de herramientas solicitadas por la comunidad y soporte para más hardware DJ.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="p-4 rounded-2xl bg-obsidian-950/60 border border-white/5">
+              <motion.div variants={fadeUp} className="p-4 rounded-2xl bg-obsidian-950/60 border border-white/5">
                 <div className="flex items-center gap-2 text-amber-400 text-xs font-mono font-bold mb-1.5">
                   <Heart className="w-4 h-4" />
                   <span>100% Open Source</span>
@@ -77,9 +95,9 @@ export default function DonateSection() {
                 <p className="text-xs text-zinc-400 leading-relaxed">
                   Garantiza que el software continúe siendo libre, sin suscripciones obligatorias ni muros de pago.
                 </p>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

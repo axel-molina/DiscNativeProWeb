@@ -35,7 +35,7 @@ export default function SpecsTicker() {
       <div className="absolute inset-0 bg-dj-dots opacity-40 pointer-events-none" />
 
       {/* Marquee ticker wrapper */}
-      <div className="flex w-max animate-marquee space-x-10 text-xs sm:text-sm font-mono font-bold tracking-wider uppercase text-zinc-300">
+      <div className="flex w-max animate-marquee space-x-10 text-xs sm:text-sm font-mono font-bold tracking-wider uppercase text-zinc-300 hover:[animation-play-state:paused]">
         {[...specs, ...specs, ...specs].map((item, idx) => {
           const Icon = item.icon;
           return (

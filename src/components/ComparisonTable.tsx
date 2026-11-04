@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
-import { Check, X, Minus, HelpCircle, Layers } from "lucide-react";
+import { motion } from "framer-motion";
+import { Check, Layers } from "lucide-react";
+import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 
 export default function ComparisonTable() {
   const rows = [
@@ -73,21 +75,33 @@ export default function ComparisonTable() {
   return (
     <section className="py-24 sm:py-32 bg-obsidian-950 border-t border-white/5 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/5 text-zinc-300 border border-white/10 mb-4">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+        >
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/5 text-zinc-300 border border-white/10 mb-4">
             <Layers className="w-3.5 h-3.5 text-acid-400" />
             BENCHMARKS & COMPARATIVA
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
+          </motion.div>
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
             ¿Por Qué Elegir <span className="text-acid-500">DiscNativePro</span>?
-          </h2>
-          <p className="mt-4 text-base text-zinc-400">
+          </motion.h2>
+          <motion.p variants={fadeUp} className="mt-4 text-base text-zinc-400">
             Comparación directa entre una solución verdaderamente nativa y las alternativas comerciales o aplicaciones basadas en navegador.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Responsive Table Container */}
-        <div className="overflow-x-auto rounded-3xl border border-white/10 bg-obsidian-900 shadow-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+          className="overflow-x-auto rounded-3xl border border-white/10 bg-obsidian-900 shadow-2xl"
+        >
           <table className="w-full text-left border-collapse min-w-[700px]">
             <thead>
               <tr className="border-b border-white/10 bg-obsidian-950 text-xs font-mono uppercase tracking-wider text-zinc-400">
@@ -122,7 +136,7 @@ export default function ComparisonTable() {
               ))}
             </tbody>
           </table>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

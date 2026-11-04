@@ -19,6 +19,8 @@ import {
 import { detectUserOS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
 import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
 import MacInstructionsModal from "@/components/MacInstructionsModal";
+import { motion } from "framer-motion";
+import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 
 export default function DownloadSection() {
   const [detectedOs, setDetectedOs] = useState<OperatingSystem>("macos");
@@ -112,17 +114,23 @@ cmake --build build --config Release --parallel`,
     <section id="downloads" className="py-24 sm:py-32 bg-obsidian-950 border-t border-white/5 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-acid-500/10 text-acid-400 border border-acid-500/30 mb-4">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+        >
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-acid-500/10 text-acid-400 border border-acid-500/30 mb-4">
             <Download className="w-3.5 h-3.5" />
             CENTRO DE DESCARGAS OFICIAL
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
+          </motion.div>
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
             Obtén <span className="text-acid-500">DiscNativePro</span> Hoy
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-zinc-400 leading-relaxed">
+          </motion.h2>
+          <motion.p variants={fadeUp} className="mt-4 text-base sm:text-lg text-zinc-400 leading-relaxed">
             Descarga binarios precompilados directamente desde las versiones oficiales publicadas en GitHub Releases o compila el código fuente para tu sistema.
-          </p>
+          </motion.p>
 
           {/* Detected OS indicator */}
           <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-obsidian-900 border border-white/10 text-xs font-mono text-zinc-300">
@@ -132,7 +140,7 @@ cmake --build build --config Release --parallel`,
               {isMobileOS(detectedOs) ? `${detectedOs} (Móvil)` : detectedOs}
             </strong>
           </div>
-        </div>
+        </motion.div>
 
         {/* Mobile Info Alert if browsing from smartphone/tablet */}
         {isMobileOS(detectedOs) && (
@@ -180,7 +188,13 @@ cmake --build build --config Release --parallel`,
         </div>
 
         {/* Selected Platform Box */}
-        <div className="bg-obsidian-900 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="bg-obsidian-900 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Column: Direct Download Button & Details */}
             <div className="lg:col-span-5 space-y-6">
@@ -307,7 +321,7 @@ cmake --build build --config Release --parallel`,
               </pre>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
       {/* Mac First-Launch Helper Modal */}
       <MacInstructionsModal 

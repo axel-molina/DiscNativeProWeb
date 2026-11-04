@@ -18,6 +18,8 @@ import {
   Youtube
 } from "lucide-react";
 import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
+import { motion } from "framer-motion";
+import { fadeUp, viewportOnce } from "@/lib/animations";
 
 export default function Footer() {
   const { latestVersion } = useReleaseDownloads();
@@ -25,7 +27,13 @@ export default function Footer() {
   return (
     <footer className="bg-obsidian-950 border-t border-white/10 text-zinc-400 py-16 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          variants={fadeUp}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10"
+        >
           {/* Brand Info (Cols 1-2) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
@@ -201,7 +209,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Disclaimer */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">

@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Sparkles, Bot, HardDrive, WifiOff, Zap } from "lucide-react";
+import { staggerContainer, fadeUp, scaleIn, viewportOnce } from "@/lib/animations";
 
 export default function AiMatchShowcase() {
   return (
@@ -10,24 +14,36 @@ export default function AiMatchShowcase() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-acid-500/10 text-acid-400 border border-acid-500/30 mb-4">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+        >
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-acid-500/10 text-acid-400 border border-acid-500/30 mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             NUEVA CARACTERÍSTICA NATIVA
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
+          </motion.div>
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
             AI Smart Match: <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-acid-400 via-cyanDeck-400 to-orangeDeck-400">
               Recomendaciones Inteligentes Para Tu Sesión
             </span>
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-zinc-400 leading-relaxed">
+          </motion.h2>
+          <motion.p variants={fadeUp} className="mt-4 text-base sm:text-lg text-zinc-400 leading-relaxed">
             Nunca más te quedes en blanco en plena cabina. Un motor nativo en C++20 analiza la pista que está sonando en Deck 1, Deck 2 o YouTube y genera sugerencias armónicas y de audiencia con explicaciones técnicas en tiempo real.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Real App Screenshot Showcase Frame */}
-        <div className="bg-obsidian-900 border border-white/10 rounded-3xl p-3 sm:p-5 shadow-2xl relative">
+        <motion.div
+          variants={scaleIn}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="bg-obsidian-900 border border-white/10 rounded-3xl p-3 sm:p-5 shadow-2xl relative"
+        >
           {/* Console Header Bar */}
           <div className="flex items-center px-3 py-2.5 mb-3 border-b border-white/5">
             <div className="flex items-center gap-1.5">
@@ -48,11 +64,17 @@ export default function AiMatchShowcase() {
               className="w-full h-auto object-cover"
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Technical Architecture Pillars */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-obsidian-900 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all">
+        <motion.div
+          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+        >
+          <motion.div variants={fadeUp} className="bg-obsidian-900 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all">
             <div className="w-10 h-10 rounded-xl bg-obsidian-950 border border-white/10 flex items-center justify-center mb-4">
               <Bot className="w-5 h-5 text-acid-400" />
             </div>
@@ -62,9 +84,9 @@ export default function AiMatchShowcase() {
             <p className="text-xs text-zinc-400 leading-relaxed font-sans">
               Configura tu propia clave de API para Gemini, Claude, OpenAI, DeepSeek u OpenRouter. Tus credenciales se cifran localmente en tu disco duro; nunca pasan por servidores de terceros.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="bg-obsidian-900 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all">
+          <motion.div variants={fadeUp} className="bg-obsidian-900 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all">
             <div className="w-10 h-10 rounded-xl bg-obsidian-950 border border-white/10 flex items-center justify-center mb-4">
               <HardDrive className="w-5 h-5 text-cyanDeck-400" />
             </div>
@@ -74,9 +96,9 @@ export default function AiMatchShowcase() {
             <p className="text-xs text-zinc-400 leading-relaxed font-sans">
               El motor cruza las recomendaciones con tu colección local en FLAC, WAV o MP3. Si la tienes en disco, la marca con un badge y permite cargarla al instante a cualquier deck sin reordenar tu sesión.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="bg-obsidian-900 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all">
+          <motion.div variants={fadeUp} className="bg-obsidian-900 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all">
             <div className="w-10 h-10 rounded-xl bg-obsidian-950 border border-white/10 flex items-center justify-center mb-4">
               <WifiOff className="w-5 h-5 text-amber-400" />
             </div>
@@ -86,9 +108,9 @@ export default function AiMatchShowcase() {
             <p className="text-xs text-zinc-400 leading-relaxed font-sans">
               Si estás en un club sin señal WiFi o prefieres no usar APIs de pago, el algoritmo determinístico genera tarjetas automáticas analizando la rueda Camelot y señales de audiencia cacheadas.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="bg-obsidian-900 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all">
+          <motion.div variants={fadeUp} className="bg-obsidian-900 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all">
             <div className="w-10 h-10 rounded-xl bg-obsidian-950 border border-white/10 flex items-center justify-center mb-4">
               <Zap className="w-5 h-5 text-orangeDeck-400" />
             </div>
@@ -98,8 +120,8 @@ export default function AiMatchShowcase() {
             <p className="text-xs text-zinc-400 leading-relaxed font-sans">
               Toda la comunicación de red corre en hilos de fondo (`juce::URL::InputStreamOptions`). El búfer de audio en tiempo real de JUCE 8 no sufre bloqueos, asegurando una reproducción ininterrumpida.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

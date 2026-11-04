@@ -20,6 +20,8 @@ import {
 import { detectUserOS, OperatingSystem, isMobileOS } from "@/lib/detectOS";
 import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
 import MacInstructionsModal from "@/components/MacInstructionsModal";
+import { motion } from "framer-motion";
+import { staggerContainer, fadeUp, scaleIn } from "@/lib/animations";
 
 export default function Hero() {
   const [os, setOs] = useState<OperatingSystem>("macos");
@@ -59,14 +61,19 @@ export default function Hero() {
       </div>
 
       {/* Glow Ambience */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-acid-500/15 blur-[130px] pointer-events-none rounded-full z-0" />
-      <div className="absolute top-1/3 left-10 w-[350px] h-[350px] bg-cyanDeck-500/10 blur-[120px] pointer-events-none rounded-full z-0" />
-      <div className="absolute top-1/3 right-10 w-[350px] h-[350px] bg-orangeDeck-500/10 blur-[120px] pointer-events-none rounded-full z-0" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-acid-500/15 blur-[130px] pointer-events-none rounded-full z-0 animate-float" />
+      <div className="absolute top-1/3 left-10 w-[350px] h-[350px] bg-cyanDeck-500/10 blur-[120px] pointer-events-none rounded-full z-0 animate-float-delayed" />
+      <div className="absolute top-1/3 right-10 w-[350px] h-[350px] bg-orangeDeck-500/10 blur-[120px] pointer-events-none rounded-full z-0 animate-float" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+        <motion.div
+          className="flex flex-col items-center text-center max-w-4xl mx-auto"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+        >
           {/* Top Pill Badges */}
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 mb-6">
+          <motion.div variants={fadeUp} className="inline-flex flex-wrap items-center justify-center gap-2 mb-6">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-acid-500/10 text-acid-400 border border-acid-500/30">
               <span className="w-1.5 h-1.5 rounded-full bg-acid-500 animate-pulse" />
               C++20 & JUCE 8 NATIVE
@@ -79,26 +86,26 @@ export default function Hero() {
               <Cpu className="w-3.5 h-3.5 text-cyanDeck-400" />
               LATENCIA ULTRABAJA
             </span>
-          </div>
+          </motion.div>
 
           {/* Main Hero Title */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase leading-[0.95]">
+          <motion.h1 variants={fadeUp} className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase leading-[0.95]">
             Potencia Nativa.
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-acid-500 via-acid-400 to-lime-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-acid-500 via-acid-400 to-lime-300 text-shimmer animate-shimmer">
               Latencia Cero.
             </span>
             <br />
             Domina La Pista.
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
-          <p className="mt-8 text-lg sm:text-xl text-zinc-400 font-normal max-w-3xl leading-relaxed">
+          <motion.p variants={fadeUp} className="mt-8 text-lg sm:text-xl text-zinc-400 font-normal max-w-3xl leading-relaxed">
             <strong className="text-zinc-200 font-semibold">DiscNativePro</strong> es la suite DJ de alto rendimiento desarrollada en C++20 y JUCE 8 para <span className="text-zinc-200">macOS, Windows y Linux</span>. Olvídate de capas lentas de Electron o navegadores: disfruta de <strong className="text-zinc-200">rack de efectos FX multi-slot</strong>, sampler launchpad de 8 pads, integración con <strong className="text-zinc-200">SoundCloud & YouTube</strong>, exploración nativa de <strong className="text-zinc-200">pendrives USB</strong>, AutoMix inteligente y controladoras MIDI físicas.
-          </p>
+          </motion.p>
 
           {/* Release Status Notice */}
-          <div className="mt-8 w-full max-w-2xl bg-obsidian-900/90 border border-emerald-500/30 rounded-2xl p-4 text-left flex items-start gap-3 backdrop-blur-sm shadow-lg shadow-emerald-500/5">
+          <motion.div variants={fadeUp} className="mt-8 w-full max-w-2xl bg-obsidian-900/90 border border-emerald-500/30 rounded-2xl p-4 text-left flex items-start gap-3 backdrop-blur-sm shadow-lg shadow-emerald-500/5">
             <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
             <div className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
               <div className="flex flex-wrap items-center gap-2 mb-1">
@@ -109,10 +116,10 @@ export default function Hero() {
               </div>
               DiscNativePro es un proyecto de código abierto construido con el framework JUCE 8. Cuenta con instalador oficial con asistente para Windows (<span className="text-zinc-200 font-mono font-semibold">Setup.exe</span>), binarios universales para macOS, tarball para Linux y sistema de auto-actualización silencioso integrado directamente en la app.
             </div>
-          </div>
+          </motion.div>
 
           {/* Direct Download & Action CTAs */}
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 w-full max-w-xl">
+          <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center justify-center gap-3 w-full max-w-xl">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
               {/* Primary Download for Detected OS / Desktop CTA on mobile */}
               {isMobileOS(os) ? (
@@ -173,10 +180,10 @@ export default function Hero() {
                 ¿Usas otro sistema operativo? Ver todas las descargas
               </a>
             )}
-          </div>
+          </motion.div>
 
           {/* Quick Clone Snippet */}
-          <div className="mt-6 flex items-center gap-2 bg-obsidian-900/90 border border-white/10 rounded-xl px-4 py-2 font-mono text-xs text-zinc-400">
+          <motion.div variants={fadeUp} className="mt-6 flex items-center gap-2 bg-obsidian-900/90 border border-white/10 rounded-xl px-4 py-2 font-mono text-xs text-zinc-400">
             <Terminal className="w-3.5 h-3.5 text-zinc-500" />
             <span className="text-zinc-500">$</span>
             <code className="text-zinc-300">git clone https://github.com/axel-molina/DiscNativePro.git</code>
@@ -191,10 +198,10 @@ export default function Hero() {
                 <Copy className="w-3.5 h-3.5" />
               )}
             </button>
-          </div>
+          </motion.div>
 
             {/* Supported OS Pill Badges */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-400">
+          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-400">
             <span className="flex items-center gap-1.5">
               <Laptop className="w-4 h-4 text-zinc-300" /> macOS (Apple Silicon & Intel)
             </span>
@@ -210,10 +217,10 @@ export default function Hero() {
             <span className="flex items-center gap-1.5 text-acid-400 font-medium">
               <Smartphone className="w-4 h-4 text-acid-400" /> iOS & Android (Próximamente)
             </span>
-          </div>
+          </motion.div>
 
           {/* Real Software Showcase Window in Hero */}
-          <div className="mt-14 w-full max-w-5xl mx-auto">
+          <motion.div variants={scaleIn} className="mt-14 w-full max-w-5xl mx-auto">
             {/* Window Container */}
             <div className="bg-obsidian-900 border border-white/10 rounded-3xl p-3 sm:p-5 shadow-2xl relative overflow-hidden group">
               {/* Top ambient glow */}
@@ -256,8 +263,8 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
       {/* Mac First-Launch Helper Modal */}
       <MacInstructionsModal 

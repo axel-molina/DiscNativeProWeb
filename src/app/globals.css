@@ -53,6 +53,23 @@ body {
   background: #2a3142;
 }
 
+/* Animated gradient text (pairs with animate-shimmer) */
+.text-shimmer {
+  background-size: 200% auto;
+}
+
+/* Accessible: kill decorative animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float,
+  .animate-float-delayed,
+  .animate-shimmer,
+  .animate-spin-slow,
+  .animate-pulse {
+    animation: none !important;
+  }
+}
+
 /* Audio waveform glow effect */
 .glow-acid {
   box-shadow: 0 0 25px rgba(204, 255, 0, 0.25);

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { 
   Download, 
   Github, 
@@ -25,6 +26,12 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { downloads, latestVersion } = useReleaseDownloads();
+  const { scrollYProgress } = useScroll();
+  const progressScaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 24,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     setOs(detectUserOS());
@@ -41,6 +48,13 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Scroll progress bar */}
+      <motion.div
+        aria-hidden="true"
+        className="fixed top-0 left-0 right-0 h-[3px] z-[60] origin-left bg-gradient-to-r from-acid-500 via-cyanDeck-400 to-orangeDeck-500 shadow-[0_0_12px_rgba(204,255,0,0.45)]"
+        style={{ scaleX: progressScaleX }}
+      />
+
       {/* Top Beta Notice Bar */}
       <div className="bg-obsidian-900 border-b border-white/5 py-1.5 px-4 text-xs font-mono text-zinc-400">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 overflow-hidden">
