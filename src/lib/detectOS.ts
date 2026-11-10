@@ -27,10 +27,10 @@ export const OS_DOWNLOADS: Record<OperatingSystem, OSDownloadInfo> = {
   windows: {
     id: "windows",
     name: "Windows",
-    badge: "Instalador Setup .exe",
+    badge: "Microsoft Store",
     arch: "x64 (Windows 10 / 11)",
     filename: "DiscNativePro-Windows-x64-Setup.exe",
-    directUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-Windows-x64-Setup.exe",
+    directUrl: "https://apps.microsoft.com/detail/9pn6bz8c2bz0?hl=es-ES&gl=ES",
     instructionsUrl: "https://github.com/axel-molina/DiscNativePro#compilaci%C3%B3n-y-generaci%C3%B3n-del-exe-en-windows",
     minVersion: "Windows 10 / 11 (64-bit)",
     status: "available",

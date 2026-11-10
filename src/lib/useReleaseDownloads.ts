@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { OS_DOWNLOADS, OSDownloadInfo, OperatingSystem } from "./detectOS";
 
 const GITHUB_REPO = "axel-molina/DiscNativePro";
-const CACHE_KEY = "dnp_release_downloads_v2";
+const CACHE_KEY = "dnp_release_downloads_v3";
 const CACHE_TTL_MS = 3 * 60 * 1000; // 3 minutos de caché
 
 interface CachedEntry {
@@ -87,7 +87,8 @@ export function useReleaseDownloads() {
 
         const resolvedVersion = releases.find((r) => !r.draft)?.tag_name || "v1.1.2";
         const resolved: Partial<Record<OperatingSystem, CachedEntry>> = {};
-        const platforms: OperatingSystem[] = ["macos", "windows", "linux"];
+        // Windows se distribuye vía Microsoft Store, no se resuelve desde Releases
+        const platforms: OperatingSystem[] = ["macos", "linux"];
 
         for (const os of platforms) {
           const targetFilename = OS_DOWNLOADS[os].filename;

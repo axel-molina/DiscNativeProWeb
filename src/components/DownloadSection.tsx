@@ -66,8 +66,8 @@ open build/DiscNativePro_artefacts/Release/DiscNativePro.app`,
       id: "windows" as OperatingSystem,
       name: "Windows",
       arch: "x64 (Windows 10 / 11)",
-      req: "Windows 10 / 11 (64-bit) • Asistente oficial Inno Setup",
-      filename: downloads.windows.filename,
+      req: "Windows 10 / 11 (64-bit) • Distribución oficial vía Microsoft Store",
+      filename: "Instalar desde Microsoft Store",
       downloadUrl: downloads.windows.directUrl,
       icon: Monitor,
       badge: downloads.windows.badge,
@@ -230,7 +230,7 @@ cmake --build build --config Release --parallel`,
                     <Download className="w-5 h-5 stroke-[2.5]" />
                     <div className="text-left">
                       <div className="text-xs uppercase font-extrabold text-obsidian-900/80">
-                        Descarga Inmediata (GitHub Release)
+                        {currentPlatform.id === "windows" ? "Disponible en Microsoft Store" : "Descarga Inmediata (GitHub Release)"}
                       </div>
                       <div>{currentPlatform.filename}</div>
                     </div>
@@ -240,7 +240,7 @@ cmake --build build --config Release --parallel`,
                     <AlertCircle className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
                     <span>
                       {currentPlatform.id === "windows"
-                        ? "Instalador oficial con asistente Inno Setup y accesos directos de escritorio."
+                        ? "Distribución oficial a través de Microsoft Store: instalación verificada por Microsoft, sin avisos de SmartScreen y con actualizaciones automáticas."
                         : "Binarios compilados automáticamente para cada versión publicada."}
                     </span>
                   </div>

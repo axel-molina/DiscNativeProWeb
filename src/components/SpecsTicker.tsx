@@ -23,7 +23,7 @@ export default function SpecsTicker() {
     { label: "SAMPLER PADS", value: "8 Triggers One-Shot", icon: Layers },
     { label: "FUENTES UNIFICADAS", value: "Local + USB + YouTube + SoundCloud", icon: Radio },
     { label: "HARDWARE READY", value: "Pioneer DDJ, Hercules & MIDI USB", icon: Cpu },
-    { label: "INSTALADOR WINDOWS", value: "Setup.exe con Asistente", icon: Download },
+    { label: "WINDOWS", value: "Microsoft Store (x64)", icon: Download },
     { label: "IN-APP UPDATER", value: "Auto-Update Silencioso", icon: RefreshCw },
     { label: "LATENCIA MOTOR", value: "<3 ms (C++20 & JUCE 8)", icon: Zap },
     { label: "IA SMART MATCH", value: "Multi-Proveedor Contextual", icon: Sparkles },

@@ -148,7 +148,7 @@ export default function Hero() {
                   <Download className="w-5 h-5 stroke-[2.5]" />
                   <div className="text-left">
                     <span className="block text-xs uppercase tracking-wider font-bold text-obsidian-900/80">
-                      Descarga Inmediata ({currentOS.filename})
+                      {os === "windows" ? "Instalación Oficial (Microsoft Store)" : `Descarga Inmediata (${currentOS.filename})`}
                     </span>
                     <span>Descargar para {currentOS.name}</span>
                   </div>
