@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import SpecsTicker from "@/components/SpecsTicker";
+import StemsShowcase from "@/components/StemsShowcase";
 import AiMatchShowcase from "@/components/AiMatchShowcase";
 import FeaturesGrid from "@/components/FeaturesGrid";
 import ComparisonTable from "@/components/ComparisonTable";
@@ -15,6 +16,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <SpecsTicker />
+      <StemsShowcase />
       <AiMatchShowcase />
       <FeaturesGrid />
       <ComparisonTable />

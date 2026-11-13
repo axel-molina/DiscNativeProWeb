@@ -1,16 +1,20 @@
 "use client";
 
 import React from "react";
-import { 
-  Zap, 
-  Cpu, 
-  Radio, 
-  Code2, 
+import {
+  Zap,
+  Cpu,
+  Radio,
+  Code2,
   Sparkles,
   Sliders,
   Layers,
   Download,
-  RefreshCw
+  RefreshCw,
+  AudioWaveform,
+  Music2,
+  Keyboard,
+  Usb
 } from "lucide-react";
 import { useReleaseDownloads } from "@/lib/useReleaseDownloads";
 
@@ -19,10 +23,15 @@ export default function SpecsTicker() {
 
   const specs = [
     { label: "VERSIÓN", value: `${latestVersion} Estable`, icon: Code2 },
+    { label: "AI STEMS", value: "Voces / Batería / Bajo / Otros en Tiempo Real", icon: AudioWaveform },
+    { label: "MODO RÁPIDO", value: "Vocal ↔ Instrumental en Segundos", icon: Zap },
+    { label: "KEY SHIFT", value: "±6 Semitonos con Key Lock", icon: Music2 },
     { label: "RACK DE EFECTOS", value: "3 Slots FX por Deck (Manual / Instant)", icon: Sliders },
     { label: "SAMPLER PADS", value: "8 Triggers One-Shot", icon: Layers },
     { label: "FUENTES UNIFICADAS", value: "Local + USB + YouTube + SoundCloud", icon: Radio },
     { label: "HARDWARE READY", value: "Pioneer DDJ, Hercules & MIDI USB", icon: Cpu },
+    { label: "MAPPINGS", value: "Importa VirtualDJ & Mixxx", icon: Keyboard },
+    { label: "MIDI EN VIVO", value: "Hotplug + LED Feedback", icon: Usb },
     { label: "WINDOWS", value: "Microsoft Store (x64)", icon: Download },
     { label: "IN-APP UPDATER", value: "Auto-Update Silencioso", icon: RefreshCw },
     { label: "LATENCIA MOTOR", value: "<3 ms (C++20 & JUCE 8)", icon: Zap },

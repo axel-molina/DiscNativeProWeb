@@ -4,19 +4,25 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   Radio,
-  Sparkles, 
-  Activity, 
-  Sliders, 
-  FolderTree, 
-  Mic, 
-  Cpu, 
-  Layers, 
+  Sparkles,
+  Activity,
+  Sliders,
+  FolderTree,
+  Mic,
+  Cpu,
+  Layers,
   RefreshCw,
   Video,
   Bot,
   Palette,
   Usb,
-  Music2
+  Music2,
+  ArrowUpDown,
+  Waves,
+  ListMusic,
+  Timer,
+  Megaphone,
+  Keyboard
 } from "lucide-react";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 
@@ -174,6 +180,108 @@ export default function FeaturesGrid() {
         "Medidor de tiempo transcurrido y estado visual en la barra superior",
       ],
       icon: Mic,
+    },
+    {
+      id: "key-shift",
+      title: "Key Shift: Transposición ±6 Semitonos",
+      category: "PERFORMANCE CREATIVO",
+      badge: "Mezcla Armónica",
+      accent: "from-purple-500/20 to-transparent",
+      borderColor: "border-purple-500/30",
+      tagColor: "text-purple-400 bg-purple-500/10 border-purple-500/20",
+      description:
+        "Cambiá el tono de una pista en ±6 semitonos sin tocar el tempo. Con Key Lock activado, el motor desplaza la tonalidad manteniendo el BPM intacto — perfecto para mezclas armónicas en la rueda Camelot o para ajustar canciones que no tienen versión compatible.",
+      points: [
+        "Rango de ±6 semitonos con indicador ámbar cuando el desplazamiento está activo",
+        "Key Lock ON: cambia la tonalidad con calidad de estudio; OFF: resampleo clásico",
+        "Click en el valor para resetear al instante y mapping MIDI dedicado (up/down/reset)",
+      ],
+      icon: ArrowUpDown,
+    },
+    {
+      id: "fx-beat-sync",
+      title: "FX Sincronizados al Beat: Echo & Gate Rítmicos",
+      category: "PERFORMANCE CREATIVO",
+      badge: "1/4 · 1/2 · 3/4 · 2/1",
+      accent: "from-acid-500/20 to-transparent",
+      borderColor: "border-acid-500/30",
+      tagColor: "text-acid-400 bg-acid-500/10 border-acid-500/20",
+      description:
+        "El Echo y el Gate se sincronizan solos con el beat real del deck: elegí la división musical (1/4, 1/2, 3/4, 2/1) y el efecto queda anclado a la grilla de la pista, sin calibrar tiempos a mano ni quedar desfasado cuando el pitch cambia.",
+      points: [
+        "Delay del Echo = división musical × beat, con selector nominado en el botón PARAM",
+        "Gate anclado al downbeat de la pista para builds rítmicos que siempre caen a tiempo",
+        "Anclaje por fase real del deck: el efecto sigue al tempo aunque muevas el pitch",
+      ],
+      icon: Waves,
+    },
+    {
+      id: "playlists",
+      title: "Playlists con Drag & Drop y Árbol de Carpetas",
+      category: "BIBLIOTECA & FUENTES",
+      badge: "Guardado Local",
+      accent: "from-cyanDeck-500/20 to-transparent",
+      borderColor: "border-cyanDeck-500/30",
+      tagColor: "text-cyanDeck-400 bg-cyanDeck-500/10 border-cyanDeck-500/20",
+      description:
+        "Organizá tus sets en playlists persistentes con reordenamiento arrastrando y soltando, tanto dentro de la lista como hacia el árbol de carpetas. Las playlists viven en tu disco como JSON portable y se cargan con la biblioteca al iniciar la app.",
+      points: [
+        "Reordenamiento drag & drop completo: dentro de la lista y hacia el árbol de carpetas",
+        "Menú contextual para agregar, quitar y administrar pistas de cada playlist",
+        "Persistencia local en JSON: tus sets sobreviven reinstalaciones y se comparten entre máquinas",
+      ],
+      icon: ListMusic,
+    },
+    {
+      id: "beat-grid-editor",
+      title: "Editor de Beat Grid Visual",
+      category: "PREPARACIÓN DE PISTAS",
+      badge: "Cuantización Exacta",
+      accent: "from-orangeDeck-500/20 to-transparent",
+      borderColor: "border-orangeDeck-500/30",
+      tagColor: "text-orangeDeck-400 bg-orangeDeck-500/10 border-orangeDeck-500/20",
+      description:
+        "Corregí la grilla de beats de cada pista en un editor visual dedicado: ajustá BPM y offset del primer golpe sobre la forma de onda y guardá la corrección por pista. Con la grilla calibrada, los hotcues se cuantizan al beat más cercano automáticamente.",
+      points: [
+        "Canvas de onda dedicado para alinear BPM y offset del downbeat con precisión",
+        "Hotcues cuantizados al beatgrid: nunca más un cue fuera de compás",
+        "Grilla persistente por pista: la corrección se recarga automáticamente con el tema",
+      ],
+      icon: Timer,
+    },
+    {
+      id: "mic-talkover",
+      title: "Micrófono + Talkover con Auto-Ducking",
+      category: "VOZ & BROADCAST",
+      badge: "Auto-Duck",
+      accent: "from-pink-500/20 to-transparent",
+      borderColor: "border-pink-500/30",
+      tagColor: "text-pink-400 bg-pink-500/10 border-pink-500/20",
+      description:
+        "Anunciá, presentá y hablá sobre la mezcla con un canal de micrófono dedicado. El talkover automático baja la música cuando hablás y la sube al soltar, con margen dinámico y limitador master para que tu voz nunca sature la sala.",
+      points: [
+        "Auto-ducking inteligente: la mezcla baja suave mientras el micrófono detecta tu voz",
+        "Controles completos del canal en Ajustes → Sonido (ganancia, ducking y margen)",
+        "Limitador master brickwall con medidor LUFS para voz y música sin clipping",
+      ],
+      icon: Megaphone,
+    },
+    {
+      id: "midi-mapping-import",
+      title: "Importá tus Mappings: VirtualDJ & Mixxx",
+      category: "HARDWARE DE CABINA",
+      badge: "Migración Fácil",
+      accent: "from-emerald-500/20 to-transparent",
+      borderColor: "border-emerald-500/30",
+      tagColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+      description:
+        "¿Venís de otro software? Importá la configuración de tu controladora sin configurar nada de cero: DiscNativePro traduce los archivos definition + mapper de VirtualDJ y los presets de comunidad de Mixxx a sus propios bindings, con reporte de lo importado.",
+      points: [
+        "Importador nativo de VirtualDJ: parsea definition + mapper XML y traduce las acciones",
+        "Catálogo de presets Mixxx con ~70 controladoras reconocidas y descarga desde la app",
+        "Detección de dispositivo por nombre + LED feedback y hotplug MIDI en vivo",
+      ],
+      icon: Keyboard,
     },
   ];
 
