@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && cd out && git init && git checkout -B gh-pages && git add -A && git commit -m 'deploy' && git push -f https://github.com/axel-molina/DiscNativeProWeb.git gh-pages && rm -rf .git"
+    "deploy": "next build && echo \"${DISCNATIVEPRO_RELEASE:-manual}\" > out/deployed_release.txt && cd out && git init && git checkout -B gh-pages && git add -A && git commit -m 'deploy' && git push -f https://github.com/axel-molina/DiscNativeProWeb.git gh-pages && rm -rf .git"
   },
   "dependencies": {
     "clsx": "^2.1.1",

@@ -1,0 +1,64 @@
+name: Deploy web on new release
+
+# La web es un sitio estático: se redeployea solo cuando aparece un release
+# nuevo en DiscNativePro. Chequeo cada 30 min comparando el tag del último
+# release contra deployed_release.txt publicado en gh-pages; si difieren,
+# reconstruye y deploya. Trigger manual disponible para deploys forzados.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  check-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Detectar último release y comparar con lo desplegado
+        id: release
+        run: |
+          TAG=$(curl -sf https://api.github.com/repos/axel-molina/DiscNativePro/releases/latest | jq -r '.tag_name')
+          if [ -z "$TAG" ] || [ "$TAG" = "null" ]; then
+            echo "::error::No se pudo leer el último release de DiscNativePro"
+            exit 1
+          fi
+          LIVE=$(curl -sf https://discnativepro.dev.ar/deployed_release.txt || echo "")
+          echo "Último release: $TAG | Web desplegada: ${LIVE:-(vacío)}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          if [ "$TAG" = "$LIVE" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.release.outputs.changed == 'true'
+        uses: actions/checkout@v4
+
+      - if: steps.release.outputs.changed == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - if: steps.release.outputs.changed == 'true'
+        run: npm ci
+
+      - if: steps.release.outputs.changed == 'true'
+        run: npm run build
+
+      - if: steps.release.outputs.changed == 'true'
+        run: echo "${{ steps.release.outputs.tag }}" > out/deployed_release.txt
+
+      - if: steps.release.outputs.changed == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: "deploy: sincronizado con release ${{ steps.release.outputs.tag }}"
