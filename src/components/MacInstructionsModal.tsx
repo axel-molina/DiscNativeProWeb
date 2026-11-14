@@ -90,8 +90,11 @@ export default function MacInstructionsModal({ isOpen, onClose }: MacInstruction
               1
             </span>
             <div className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-              <strong className="text-white block font-semibold mb-0.5">Descomprime y mueve a Aplicaciones</strong>
-              Descomprime el archivo descargado y arrastra <code className="text-zinc-200 bg-white/5 px-1.5 py-0.5 rounded font-mono text-xs">DiscNativePro.app</code> a tu carpeta <strong>Aplicaciones</strong>.
+              <strong className="text-white block font-semibold mb-0.5">Abre el .dmg y arrastra a Aplicaciones</strong>
+              Abre el archivo <code className="text-zinc-200 bg-white/5 px-1.5 py-0.5 rounded font-mono text-xs">DiscNativePro-macOS.dmg</code> descargado: se abrirá una ventana con la app y un acceso directo a <strong>Aplicaciones</strong>. Arrastra <code className="text-zinc-200 bg-white/5 px-1.5 py-0.5 rounded font-mono text-xs">DiscNativePro.app</code> sobre esa carpeta y luego expulsa el disco virtual.
+              <span className="block mt-1 text-zinc-400 text-xs">
+                Si descargaste el <code className="text-zinc-300 bg-white/5 px-1 py-0.5 rounded font-mono text-[11px]">.zip</code>: descomprime el archivo y arrastra la app a Aplicaciones manualmente.
+              </span>
             </div>
           </div>
 

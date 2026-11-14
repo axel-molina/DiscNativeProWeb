@@ -10,6 +10,8 @@ export interface OSDownloadInfo {
   instructionsUrl: string;
   minVersion: string;
   status: "available" | "coming_soon";
+  // Descarga alternativa (mismo asset de GitHub Releases, formato distinto).
+  altDownload?: { filename: string; url: string };
 }
 
 export const OS_DOWNLOADS: Record<OperatingSystem, OSDownloadInfo> = {
@@ -18,11 +20,15 @@ export const OS_DOWNLOADS: Record<OperatingSystem, OSDownloadInfo> = {
     name: "macOS",
     badge: "Universal Binary",
     arch: "Apple Silicon (M1/M2/M3/M4) & Intel x86_64",
-    filename: "DiscNativePro-macOS-Universal.zip",
-    directUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-macOS-Universal.zip",
+    filename: "DiscNativePro-macOS.dmg",
+    directUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-macOS.dmg",
     instructionsUrl: "https://github.com/axel-molina/DiscNativePro#compilaci%C3%B3n-y-ejecuci%C3%B3n-en-macos",
     minVersion: "macOS 11.0 Big Sur o posterior",
     status: "available",
+    altDownload: {
+      filename: "DiscNativePro-macOS-Universal.zip",
+      url: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-macOS-Universal.zip",
+    },
   },
   windows: {
     id: "windows",

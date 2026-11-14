@@ -173,12 +173,24 @@ export default function Hero() {
                 <span>Versión móvil nativa (iOS & Android) en desarrollo activo</span>
               </div>
             ) : (
-              <a
-                href="#downloads"
-                className="text-xs font-mono text-zinc-400 hover:text-white transition-colors underline underline-offset-4"
-              >
-                ¿Usas otro sistema operativo? Ver todas las descargas
-              </a>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-x-4 gap-y-1 mt-1">
+                <a
+                  href="#downloads"
+                  className="text-xs font-mono text-zinc-400 hover:text-white transition-colors underline underline-offset-4"
+                >
+                  ¿Usas otro sistema operativo? Ver todas las descargas
+                </a>
+                {os === "macos" && currentOS.altDownload && (
+                  <a
+                    href={currentOS.altDownload.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-mono text-zinc-500 hover:text-white transition-colors"
+                  >
+                    ¿Prefieres el .zip? Descarga aquí
+                  </a>
+                )}
+              </div>
             )}
           </motion.div>
 

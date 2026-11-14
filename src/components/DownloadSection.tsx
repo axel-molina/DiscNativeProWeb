@@ -55,6 +55,7 @@ export default function DownloadSection() {
       downloadUrl: downloads.macos.directUrl,
       icon: Laptop,
       badge: downloads.macos.badge,
+      altDownload: downloads.macos.altDownload,
       cliInstructions: `# Clonar y compilar en macOS
 git clone https://github.com/axel-molina/DiscNativePro.git
 cd DiscNativePro
@@ -71,6 +72,7 @@ open build/DiscNativePro_artefacts/Release/DiscNativePro.app`,
       downloadUrl: downloads.windows.directUrl,
       icon: Monitor,
       badge: downloads.windows.badge,
+      altDownload: undefined,
       cliInstructions: `# Compilación en Windows (PowerShell)
 git clone https://github.com/axel-molina/DiscNativePro.git
 cd DiscNativePro
@@ -87,6 +89,7 @@ cmake --build build --config Release --parallel`,
       downloadUrl: downloads.linux.directUrl,
       icon: Terminal,
       badge: downloads.linux.badge,
+      altDownload: undefined,
       cliInstructions: `# Dependencias y compilación en Ubuntu / Debian
 sudo apt-get update && sudo apt-get install -y build-essential cmake ninja-build libasound2-dev libwebkit2gtk-4.1-dev libglu1-mesa-dev
 git clone https://github.com/axel-molina/DiscNativePro.git
@@ -102,6 +105,7 @@ cmake --build build --config Release --parallel`,
       downloadUrl: "https://github.com/axel-molina/DiscNativePro",
       icon: Smartphone,
       badge: "Próximamente",
+      altDownload: undefined,
       cliInstructions: `# Desarrollo Móvil (En progreso)
 # Repositorio oficial: https://github.com/axel-molina/DiscNativePro
 # Mantente al tanto de las ramas de desarrollo para iOS y Android.`,
@@ -235,6 +239,18 @@ cmake --build build --config Release --parallel`,
                       <div>{currentPlatform.filename}</div>
                     </div>
                   </a>
+
+                  {currentPlatform.altDownload && (
+                    <a
+                      href={currentPlatform.altDownload.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 text-xs font-mono text-zinc-400 hover:text-white transition-colors underline underline-offset-4"
+                    >
+                      <FolderArchive className="w-3.5 h-3.5" />
+                      <span>¿Prefieres el formato clásico? Descargar {currentPlatform.altDownload.filename}</span>
+                    </a>
+                  )}
 
                   <div className="flex items-center gap-2 text-zinc-500 text-[11px] font-mono">
                     <AlertCircle className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
