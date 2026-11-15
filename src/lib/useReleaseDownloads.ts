@@ -4,72 +4,37 @@ import { useState, useEffect } from "react";
 import { OS_DOWNLOADS, OSDownloadInfo, OperatingSystem } from "./detectOS";
 
 const GITHUB_REPO = "axel-molina/DiscNativePro";
-const CACHE_KEY = "dnp_release_downloads_v3";
-const CACHE_TTL_MS = 3 * 60 * 1000; // 3 minutos de caché
-
-interface CachedEntry {
-  url: string;
-  tag: string;
-}
-
-interface CachePayload {
-  timestamp: number;
-  latestVersion: string;
-  entries: Partial<Record<OperatingSystem, CachedEntry>>;
-}
-
-interface GitHubAsset {
-  name: string;
-  browser_download_url: string;
-}
+const CACHE_KEY = "dnp_latest_version_v4";
 
 interface GitHubRelease {
   tag_name: string;
   draft: boolean;
-  assets?: GitHubAsset[];
 }
 
+/**
+ * Los botones de descarga usan SIEMPRE las URLs estáticas de OS_DOWNLOADS
+ * (releases/latest/download/...), que GitHub redirige al último release
+ * publicado: ningún caché del navegador puede hacer bajar una versión vieja.
+ * La API de GitHub solo resuelve el número de versión visible (badge, ticker)
+ * con patrón stale-while-revalidate: se muestra el caché al instante y se
+ * re-consulta en cada carga para que no quede clavado un tag viejo.
+ */
 export function useReleaseDownloads() {
-  const [downloads, setDownloads] = useState<Record<OperatingSystem, OSDownloadInfo>>(OS_DOWNLOADS);
-  const [latestVersion, setLatestVersion] = useState<string>("v1.1.2");
+  const [downloads] = useState<Record<OperatingSystem, OSDownloadInfo>>(OS_DOWNLOADS);
+  const [latestVersion, setLatestVersion] = useState<string>(() => {
+    if (typeof window === "undefined") return "";
+    try {
+      return sessionStorage.getItem(CACHE_KEY) || "";
+    } catch {
+      return "";
+    }
+  });
   const [isResolved, setIsResolved] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
 
-    async function resolveUrls() {
-      // 1. Intentar recuperar del caché local si aún es válido
-      try {
-        const cachedStr = sessionStorage.getItem(CACHE_KEY);
-        if (cachedStr) {
-          const cached: CachePayload = JSON.parse(cachedStr);
-          if (Date.now() - cached.timestamp < CACHE_TTL_MS) {
-            if (cached.latestVersion) {
-              setLatestVersion(cached.latestVersion);
-            }
-            setDownloads((prev) => {
-              const next = { ...prev };
-              (Object.keys(cached.entries) as OperatingSystem[]).forEach((os) => {
-                const entry = cached.entries[os];
-                if (entry && next[os]) {
-                  next[os] = {
-                    ...next[os],
-                    directUrl: entry.url,
-                    badge: entry.tag ? `${next[os].badge} (${entry.tag})` : next[os].badge,
-                  };
-                }
-              });
-              return next;
-            });
-            setIsResolved(true);
-            return;
-          }
-        }
-      } catch {
-        // En entornos con restricciones de almacenamiento, continuar
-      }
-
-      // 2. Consultar las releases públicas recientes en GitHub
+    async function resolveVersion() {
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 4000);
@@ -85,63 +50,23 @@ export function useReleaseDownloads() {
         const releases: GitHubRelease[] = await res.json();
         if (!Array.isArray(releases) || releases.length === 0) return;
 
-        const resolvedVersion = releases.find((r) => !r.draft)?.tag_name || "v1.1.2";
-        const resolved: Partial<Record<OperatingSystem, CachedEntry>> = {};
-        // Windows se distribuye vía Microsoft Store, no se resuelve desde Releases
-        const platforms: OperatingSystem[] = ["macos", "linux"];
+        const resolvedVersion = releases.find((r) => !r.draft)?.tag_name || "";
+        if (!resolvedVersion || !isMounted) return;
 
-        for (const os of platforms) {
-          const targetFilename = OS_DOWNLOADS[os].filename;
-          for (const rel of releases) {
-            if (rel.draft) continue;
-            const asset = rel.assets?.find((a) => a.name === targetFilename);
-            if (asset?.browser_download_url) {
-              resolved[os] = {
-                url: asset.browser_download_url,
-                tag: rel.tag_name,
-              };
-              break;
-            }
-          }
-        }
-
-        if (isMounted) {
-          setLatestVersion(resolvedVersion);
-          setDownloads((prev) => {
-            const next = { ...prev };
-            (Object.keys(resolved) as OperatingSystem[]).forEach((os) => {
-              const entry = resolved[os];
-              if (entry && next[os]) {
-                next[os] = {
-                  ...next[os],
-                  directUrl: entry.url,
-                  badge: entry.tag ? `${next[os].badge} (${entry.tag})` : next[os].badge,
-                };
-              }
-            });
-            return next;
-          });
-          setIsResolved(true);
-        }
-
+        setLatestVersion(resolvedVersion);
+        setIsResolved(true);
         try {
-          sessionStorage.setItem(
-            CACHE_KEY,
-            JSON.stringify({
-              timestamp: Date.now(),
-              latestVersion: resolvedVersion,
-              entries: resolved,
-            })
-          );
+          sessionStorage.setItem(CACHE_KEY, resolvedVersion);
         } catch {
           // ignore
         }
       } catch {
-        // Fallback transparente a las URLs estáticas predeterminadas
+        // Sin red / rate limit: se mantiene el caché o vacío, los links
+        // de descarga siguen apuntando al último release vía /latest/.
       }
     }
 
-    resolveUrls();
+    resolveVersion();
 
     return () => {
       isMounted = false;
