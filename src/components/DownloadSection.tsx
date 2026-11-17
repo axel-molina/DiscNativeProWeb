@@ -50,7 +50,7 @@ export default function DownloadSection() {
       id: "macos" as OperatingSystem,
       name: "macOS",
       arch: "Apple Silicon & Intel (Universal)",
-      req: "macOS 11.0 Big Sur o posterior",
+      req: "macOS 13.3 Ventura o posterior",
       filename: downloads.macos.filename,
       downloadUrl: downloads.macos.directUrl,
       icon: Laptop,
@@ -67,12 +67,12 @@ open build/DiscNativePro_artefacts/Release/DiscNativePro.app`,
       id: "windows" as OperatingSystem,
       name: "Windows",
       arch: "x64 (Windows 10 / 11)",
-      req: "Windows 10 / 11 (64-bit) • Distribución oficial vía Microsoft Store",
-      filename: "Instalar desde Microsoft Store",
+      req: "Windows 10 / 11 (64-bit) • Setup.exe o Microsoft Store",
+      filename: downloads.windows.filename,
       downloadUrl: downloads.windows.directUrl,
       icon: Monitor,
       badge: downloads.windows.badge,
-      altDownload: undefined,
+      altDownload: downloads.windows.altDownload,
       cliInstructions: `# Compilación en Windows (PowerShell)
 git clone https://github.com/axel-molina/DiscNativePro.git
 cd DiscNativePro
@@ -89,7 +89,7 @@ cmake --build build --config Release --parallel`,
       downloadUrl: downloads.linux.directUrl,
       icon: Terminal,
       badge: downloads.linux.badge,
-      altDownload: undefined,
+      altDownload: downloads.linux.altDownload,
       cliInstructions: `# Dependencias y compilación en Ubuntu / Debian
 sudo apt-get update && sudo apt-get install -y build-essential cmake ninja-build libasound2-dev libwebkit2gtk-4.1-dev libglu1-mesa-dev
 git clone https://github.com/axel-molina/DiscNativePro.git
@@ -234,7 +234,7 @@ cmake --build build --config Release --parallel`,
                     <Download className="w-5 h-5 stroke-[2.5]" />
                     <div className="text-left">
                       <div className="text-xs uppercase font-extrabold text-obsidian-900/80">
-                        {currentPlatform.id === "windows" ? "Disponible en Microsoft Store" : "Descarga Inmediata (GitHub Release)"}
+                        Descarga Inmediata (GitHub Release)
                       </div>
                       <div>{currentPlatform.filename}</div>
                     </div>
@@ -248,7 +248,10 @@ cmake --build build --config Release --parallel`,
                       className="flex items-center justify-center gap-2 text-xs font-mono text-zinc-400 hover:text-white transition-colors underline underline-offset-4"
                     >
                       <FolderArchive className="w-3.5 h-3.5" />
-                      <span>¿Prefieres el formato clásico? Descargar {currentPlatform.altDownload.filename}</span>
+                      <span>
+                        {currentPlatform.altDownload.label ??
+                          `¿Prefieres el formato clásico? Descargar ${currentPlatform.altDownload.filename}`}
+                      </span>
                     </a>
                   )}
 
@@ -256,7 +259,9 @@ cmake --build build --config Release --parallel`,
                     <AlertCircle className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
                     <span>
                       {currentPlatform.id === "windows"
-                        ? "Distribución oficial a través de Microsoft Store: instalación verificada por Microsoft, sin avisos de SmartScreen y con actualizaciones automáticas."
+                        ? "El Setup.exe incluye las DLL de ONNX Runtime y se actualiza solo al reiniciar la app. En Microsoft Store las actualizaciones las gestiona la Store."
+                        : currentPlatform.id === "linux"
+                        ? "El AppImage requiere glibc ≥ 2.39 (Ubuntu 24.04+); el vídeo de YouTube necesita WebKitGTK y los plugins de GStreamer del sistema."
                         : "Binarios compilados automáticamente para cada versión publicada."}
                     </span>
                   </div>

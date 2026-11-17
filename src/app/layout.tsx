@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DiscNativePro — Software DJ Nativo de Alto Rendimiento",
     description:
-      "Arquitectura C++20 y JUCE 8 con latencia cero. Disponible en Microsoft Store para Windows; binarios para macOS y Linux vía GitHub.",
+      "Arquitectura C++20 y JUCE 8 con latencia cero. Setup.exe y Microsoft Store para Windows; DMG para macOS y tarball / AppImage para Linux vía GitHub.",
     type: "website",
     locale: "es_ES",
   },

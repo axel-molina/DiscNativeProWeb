@@ -105,10 +105,10 @@ export default function FeaturesGrid() {
       borderColor: "border-emerald-500/30",
       tagColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
       description:
-        "Conecta tu controlador físico por cable USB y toma el control de los jog wheels, pitch faders y pads. Soporte de fábrica para la serie Pioneer DDJ, Hercules y Numark, con monitor de actividad MIDI en vivo y enrutamiento a 4 canales para preescucha CUE en auriculares.",
+        "Conecta tu controlador físico por cable USB y toma el control de los jog wheels, pitch faders y pads. Perfiles por controladora (Pioneer DDJ, Denon MC, genérica) que se autodetectan por nombre y aplican sus mapeos de fábrica, con detección de conflictos y monitor de actividad MIDI en vivo.",
       points: [
-        "Detección plug & play sin instalar drivers propietarios adicionales en macOS y Linux",
-        "Resolución de pitch faders en 14 bits y simulación de jog wheel con scratch analógico",
+        "Selector de perfil con badge Detectado / Manual y mapeos por defecto por familia",
+        "Contador de conflictos ⚠ y diálogo Reemplazar / Cancelar al aprender un control ocupado",
         "Enrutamiento estéreo independiente: Canales 1-2 a Master y Canales 3-4 a Auriculares",
       ],
       icon: Cpu,
@@ -241,9 +241,9 @@ export default function FeaturesGrid() {
       borderColor: "border-orangeDeck-500/30",
       tagColor: "text-orangeDeck-400 bg-orangeDeck-500/10 border-orangeDeck-500/20",
       description:
-        "Corregí la grilla de beats de cada pista en un editor visual dedicado: ajustá BPM y offset del primer golpe sobre la forma de onda y guardá la corrección por pista. Con la grilla calibrada, los hotcues se cuantizan al beat más cercano automáticamente.",
+        "Corregí la grilla de beats sin cargar la pista a una bandeja: clic derecho en la biblioteca → Editar BPM / beat grid, ajustá BPM y offset sobre la forma de onda y audicioná el resultado por el canal de preview. La corrección se guarda por pista y los hotcues se cuantizan al beat más cercano automáticamente.",
       points: [
-        "Canvas de onda dedicado para alinear BPM y offset del downbeat con precisión",
+        "Clic derecho → editar grid al instante, con botón PLAY de audición por preview",
         "Hotcues cuantizados al beatgrid: nunca más un cue fuera de compás",
         "Grilla persistente por pista: la corrección se recarga automáticamente con el tema",
       ],
@@ -282,6 +282,23 @@ export default function FeaturesGrid() {
         "Detección de dispositivo por nombre + LED feedback y hotplug MIDI en vivo",
       ],
       icon: Keyboard,
+    },
+    {
+      id: "ui-usability",
+      title: "Interfaz Unificada: Tipografía, Idioma & Buscador",
+      category: "INTERFAZ & USABILIDAD",
+      badge: "ES / EN en Caliente",
+      accent: "from-purple-500/20 to-transparent",
+      borderColor: "border-purple-500/30",
+      tagColor: "text-purple-400 bg-purple-500/10 border-purple-500/20",
+      description:
+        "La misma identidad visual en macOS, Windows y Linux: tipografía Sora + JetBrains Mono embebida en el binario, sin depender de las fuentes del sistema. Cambiá el idioma español / inglés en caliente y encontrá cualquier opción con el buscador de Ajustes.",
+      points: [
+        "Tooltips bilingües en los controles, actualizados al cambiar de idioma sin reiniciar",
+        "Buscador de Ajustes con salto a la pestaña y resaltado de la opción encontrada",
+        "Marquesina para títulos y artistas largos en los decks",
+      ],
+      icon: Palette,
     },
   ];
 

@@ -114,7 +114,7 @@ export default function Hero() {
                 </span>
                 <span className="text-zinc-400 text-xs font-mono">100% Open Source &bull; Sin Telemetría</span>
               </div>
-              DiscNativePro es un proyecto de código abierto construido con el framework JUCE 8. Cuenta con instalador oficial con asistente para Windows (<span className="text-zinc-200 font-mono font-semibold">Setup.exe</span>), binarios universales para macOS, tarball para Linux y sistema de auto-actualización silencioso integrado directamente en la app.
+              DiscNativePro es un proyecto de código abierto construido con el framework JUCE 8. Cuenta con instalador oficial con asistente para Windows (<span className="text-zinc-200 font-mono font-semibold">Setup.exe</span>), binarios universales para macOS, tarball y AppImage para Linux y sistema de auto-actualización silencioso integrado directamente en la app.
             </div>
           </motion.div>
 
@@ -148,7 +148,7 @@ export default function Hero() {
                   <Download className="w-5 h-5 stroke-[2.5]" />
                   <div className="text-left">
                     <span className="block text-xs uppercase tracking-wider font-bold text-obsidian-900/80">
-                      {os === "windows" ? "Instalación Oficial (Microsoft Store)" : `Descarga Inmediata (${currentOS.filename})`}
+                      {`Descarga Inmediata (${currentOS.filename})`}
                     </span>
                     <span>Descargar para {currentOS.name}</span>
                   </div>

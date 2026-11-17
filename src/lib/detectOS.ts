@@ -11,7 +11,7 @@ export interface OSDownloadInfo {
   minVersion: string;
   status: "available" | "coming_soon";
   // Descarga alternativa (mismo asset de GitHub Releases, formato distinto).
-  altDownload?: { filename: string; url: string };
+  altDownload?: { filename: string; url: string; label?: string };
 }
 
 export const OS_DOWNLOADS: Record<OperatingSystem, OSDownloadInfo> = {
@@ -23,7 +23,7 @@ export const OS_DOWNLOADS: Record<OperatingSystem, OSDownloadInfo> = {
     filename: "DiscNativePro-macOS.dmg",
     directUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-macOS.dmg",
     instructionsUrl: "https://github.com/axel-molina/DiscNativePro#compilaci%C3%B3n-y-ejecuci%C3%B3n-en-macos",
-    minVersion: "macOS 11.0 Big Sur o posterior",
+    minVersion: "macOS 13.3 Ventura o posterior",
     status: "available",
     altDownload: {
       filename: "DiscNativePro-macOS-Universal.zip",
@@ -33,13 +33,18 @@ export const OS_DOWNLOADS: Record<OperatingSystem, OSDownloadInfo> = {
   windows: {
     id: "windows",
     name: "Windows",
-    badge: "Microsoft Store",
+    badge: "Setup.exe x64",
     arch: "x64 (Windows 10 / 11)",
     filename: "DiscNativePro-Windows-x64-Setup.exe",
-    directUrl: "https://apps.microsoft.com/detail/9pn6bz8c2bz0?hl=es-ES&gl=ES",
+    directUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-Windows-x64-Setup.exe",
     instructionsUrl: "https://github.com/axel-molina/DiscNativePro#compilaci%C3%B3n-y-generaci%C3%B3n-del-exe-en-windows",
     minVersion: "Windows 10 / 11 (64-bit)",
     status: "available",
+    altDownload: {
+      filename: "Microsoft Store",
+      url: "https://apps.microsoft.com/detail/9pn6bz8c2bz0?hl=es-ES&gl=ES",
+      label: "¿Prefieres la instalación verificada por Microsoft? Obtener en Microsoft Store",
+    },
   },
   linux: {
     id: "linux",
@@ -51,6 +56,11 @@ export const OS_DOWNLOADS: Record<OperatingSystem, OSDownloadInfo> = {
     instructionsUrl: "https://github.com/axel-molina/DiscNativePro#compilaci%C3%B3n-y-ejecuci%C3%B3n-en-linux",
     minVersion: "Ubuntu 22.04+, Debian 12, Fedora 38+",
     status: "available",
+    altDownload: {
+      filename: "DiscNativePro-Linux-x86_64.AppImage",
+      url: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-Linux-x86_64.AppImage",
+      label: "AppImage x64: un solo archivo ejecutable (chmod +x y listo)",
+    },
   },
   ios: {
     id: "ios",
