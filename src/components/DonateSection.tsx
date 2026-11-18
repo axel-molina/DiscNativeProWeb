@@ -35,7 +35,7 @@ export default function DonateSection() {
               </h2>
 
               <p className="mt-4 text-base sm:text-lg text-zinc-300 leading-relaxed">
-                Si te gusta la app, puedes apoyar el desarrollo y las futuras funcionalidades regalando un café. Tu aporte voluntario es clave para seguir mejorando esta herramienta nativa y de código abierto.
+                Si te gusta la app, puedes apoyar el desarrollo y las futuras funcionalidades regalando un café. Tu aporte voluntario es clave para seguir mejorando esta herramienta nativa con código fuente disponible.
               </p>
 
               {/* Direct CTA Button */}
@@ -90,10 +90,10 @@ export default function DonateSection() {
               <motion.div variants={fadeUp} className="p-4 rounded-2xl bg-obsidian-950/60 border border-white/5">
                 <div className="flex items-center gap-2 text-amber-400 text-xs font-mono font-bold mb-1.5">
                   <Heart className="w-4 h-4" />
-                  <span>100% Open Source</span>
+                  <span>Código Fuente Disponible</span>
                 </div>
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  Garantiza que el software continúe siendo libre, sin suscripciones obligatorias ni muros de pago.
+                  El código está publicado en GitHub: software gratuito, sin suscripciones obligatorias ni muros de pago.
                 </p>
               </motion.div>
             </motion.div>

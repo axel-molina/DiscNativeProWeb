@@ -80,7 +80,7 @@ export default function Hero() {
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-zinc-800/80 text-zinc-300 border border-white/10">
               <Github className="w-3.5 h-3.5 text-zinc-400" />
-              100% CÓDIGO ABIERTO
+              CÓDIGO FUENTE EN GITHUB
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-zinc-800/80 text-zinc-300 border border-white/10">
               <Cpu className="w-3.5 h-3.5 text-cyanDeck-400" />
@@ -112,9 +112,9 @@ export default function Hero() {
                 <span className="font-bold text-emerald-400 font-mono text-xs uppercase bg-emerald-500/15 px-2 py-0.5 rounded border border-emerald-500/30">
                   VERSIÓN {latestVersion} DISPONIBLE
                 </span>
-                <span className="text-zinc-400 text-xs font-mono">100% Open Source &bull; Sin Telemetría</span>
+                <span className="text-zinc-400 text-xs font-mono">Código fuente disponible en GitHub &bull; Sin Telemetría</span>
               </div>
-              DiscNativePro es un proyecto de código abierto construido con el framework JUCE 8. Cuenta con instalador oficial con asistente para Windows (<span className="text-zinc-200 font-mono font-semibold">Setup.exe</span>), binarios universales para macOS, tarball y AppImage para Linux y sistema de auto-actualización silencioso integrado directamente en la app.
+              DiscNativePro es un proyecto con código fuente disponible en GitHub, construido con el framework JUCE 8. Cuenta con instalador oficial con asistente para Windows (<span className="text-zinc-200 font-mono font-semibold">Setup.exe</span>), binarios universales para macOS, tarball y AppImage para Linux y sistema de auto-actualización silencioso integrado directamente en la app.
             </div>
           </motion.div>
 

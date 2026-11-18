@@ -79,7 +79,7 @@ export default function MacInstructionsModal({ isOpen, onClose }: MacInstruction
         </h3>
 
         <p className="mt-2 text-xs sm:text-sm text-zinc-400 leading-relaxed font-sans">
-          Al ser un software libre y gratuito sin licencia comercial de Apple ($99/año), el sistema de seguridad <strong>macOS Gatekeeper</strong> solicita autorización la primera vez que se abre.
+          Al ser un software gratuito sin licencia comercial de Apple ($99/año), el sistema de seguridad <strong>macOS Gatekeeper</strong> solicita autorización la primera vez que se abre.
         </p>
 
         {/* Steps */}

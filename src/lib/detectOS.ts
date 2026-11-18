@@ -54,7 +54,7 @@ export const OS_DOWNLOADS: Record<OperatingSystem, OSDownloadInfo> = {
     filename: "DiscNativePro-Linux-x64.tar.gz",
     directUrl: "https://github.com/axel-molina/DiscNativePro/releases/latest/download/DiscNativePro-Linux-x64.tar.gz",
     instructionsUrl: "https://github.com/axel-molina/DiscNativePro#compilaci%C3%B3n-y-ejecuci%C3%B3n-en-linux",
-    minVersion: "Ubuntu 22.04+, Debian 12, Fedora 38+",
+    minVersion: "Ubuntu 24.04+, Debian 13+, Fedora 40+ (glibc ≥ 2.39)",
     status: "available",
     altDownload: {
       filename: "DiscNativePro-Linux-x86_64.AppImage",

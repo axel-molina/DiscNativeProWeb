@@ -84,7 +84,7 @@ cmake --build build --config Release --parallel`,
       id: "linux" as OperatingSystem,
       name: "Linux",
       arch: "x86_64 (Ubuntu, Debian, Fedora)",
-      req: "ALSA, WebKitGTK 4.1, OpenGL",
+      req: "glibc ≥ 2.39 (Ubuntu 24.04+), ALSA, WebKitGTK 4.1, OpenGL",
       filename: downloads.linux.filename,
       downloadUrl: downloads.linux.directUrl,
       icon: Terminal,
@@ -261,7 +261,7 @@ cmake --build build --config Release --parallel`,
                       {currentPlatform.id === "windows"
                         ? "El Setup.exe incluye las DLL de ONNX Runtime y se actualiza solo al reiniciar la app. En Microsoft Store las actualizaciones las gestiona la Store."
                         : currentPlatform.id === "linux"
-                        ? "El AppImage requiere glibc ≥ 2.39 (Ubuntu 24.04+); el vídeo de YouTube necesita WebKitGTK y los plugins de GStreamer del sistema."
+                        ? "Los binarios de v1.4.2 exigen glibc 2.43 (Ubuntu 26.04); desde v1.4.3, glibc ≥ 2.39 (Ubuntu 24.04+). El vídeo de YouTube necesita WebKitGTK y los plugins de GStreamer del sistema."
                         : "Binarios compilados automáticamente para cada versión publicada."}
                     </span>
                   </div>

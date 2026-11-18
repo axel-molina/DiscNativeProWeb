@@ -63,7 +63,7 @@ export default function Navbar() {
               VERSIÓN {latestVersion} (ESTABLE)
             </span>
             <span className="text-zinc-400 hidden md:inline truncate">
-              Software libre en desarrollo continuo. Reporta bugs o colabora en GitHub.
+              Software nativo en desarrollo continuo. Reporta bugs o colabora en GitHub.
             </span>
           </div>
           <div className="flex items-center gap-3 text-[11px] whitespace-nowrap shrink-0">
@@ -110,7 +110,7 @@ export default function Navbar() {
                   DISCNATIVE<span className="text-acid-500">PRO</span>
                 </span>
                 <span className="text-[9px] sm:text-[10px] tracking-widest uppercase font-mono text-zinc-400 whitespace-nowrap hidden sm:inline">
-                  Open Source DJ Engine
+                  Native DJ Engine
                 </span>
               </div>
             </Link>

@@ -9,7 +9,7 @@ export default function ComparisonTable() {
   const rows = [
     {
       feature: "Modelo de Licencia y Coste",
-      discNative: "100% Gratis y Open Source",
+      discNative: "100% Gratis, Código en GitHub",
       discNativeHighlight: true,
       commercial: "Suscripción ($15 – $35 / mes)",
       webDj: "Freemium con limitaciones",
@@ -109,7 +109,7 @@ export default function ComparisonTable() {
                 <th className="py-5 px-6 bg-acid-500/10 text-acid-400 border-x border-acid-500/20 font-bold">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-acid-400" />
-                    DiscNativePro (Open Source)
+                    DiscNativePro (Código en GitHub)
                   </div>
                 </th>
                 <th className="py-5 px-6 text-zinc-400">Suites Comerciales Cerradas</th>

@@ -29,7 +29,7 @@ export default function SpecsTicker() {
     { label: "RACK DE EFECTOS", value: "3 Slots FX por Deck (Manual / Instant)", icon: Sliders },
     { label: "SAMPLER PADS", value: "8 Triggers One-Shot", icon: Layers },
     { label: "FUENTES UNIFICADAS", value: "Local + USB + YouTube + SoundCloud", icon: Radio },
-    { label: "HARDWARE READY", value: "Pioneer DDJ, Hercules & MIDI USB", icon: Cpu },
+    { label: "HARDWARE READY", value: "Perfiles DDJ / Denon MC + MIDI USB", icon: Cpu },
     { label: "MAPPINGS", value: "Importa VirtualDJ & Mixxx", icon: Keyboard },
     { label: "MIDI EN VIVO", value: "Hotplug + LED Feedback", icon: Usb },
     { label: "WINDOWS", value: "Setup.exe & Microsoft Store (x64)", icon: Download },

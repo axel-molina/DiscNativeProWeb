@@ -5,11 +5,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "DiscNativePro — Software DJ Nativo de Alto Rendimiento",
   description:
-    "Software DJ profesional de código abierto para macOS, Windows y Linux en C++20 y JUCE 8. Sampler Launchpad, YouTube Video DJ, SoundCloud, biblioteca USB, AutoMix inteligente y controladoras MIDI USB.",
+    "Software DJ profesional con código fuente disponible en GitHub para macOS, Windows y Linux en C++20 y JUCE 8. Sampler Launchpad, YouTube Video DJ, SoundCloud, biblioteca USB, AutoMix inteligente y controladoras MIDI USB.",
   keywords: [
     "DJ Software",
     "DiscNativePro",
-    "Open Source DJ",
+    "Native DJ Software",
     "DJ Effects FX",
     "DJ Sampler",
     "SoundCloud DJ",

@@ -66,10 +66,10 @@ export default function LegalPage() {
             Términos de Uso y <span className="text-acid-500">Privacidad</span>
           </h1>
           <p className="mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed font-sans max-w-2xl">
-            DiscNativePro es un proyecto de software libre para DJs, construido sobre principios de transparencia técnica, código abierto y respeto absoluto por la privacidad del usuario.
+            DiscNativePro es un proyecto de software gratuito para DJs, construido sobre principios de transparencia técnica, código fuente disponible y respeto absoluto por la privacidad del usuario.
           </p>
           <div className="mt-4 text-xs font-mono text-zinc-500">
-            Última actualización: Octubre 2026 &bull; Vigente para suites de escritorio v1.x
+            Última actualización: Noviembre 2026 &bull; Vigente para suites de escritorio v1.x
           </div>
         </div>
 
@@ -181,7 +181,7 @@ export default function LegalPage() {
               <span>2.1. Naturaleza y Licencia del Software</span>
             </div>
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans">
-              DiscNativePro es un software libre y de código abierto desarrollado comunitariamente sobre el framework JUCE 8 y C++20. Su código fuente está a disposición pública en GitHub bajo los términos de su respectiva licencia de código abierto, la cual permite la inspección, compilación, bifurcación y uso no comercial sin costo.
+              DiscNativePro es un software gratuito desarrollado sobre el framework JUCE 8 y C++20. Su código fuente está publicado en GitHub para inspección y compilación; todos los derechos están reservados y no se concede licencia de redistribución ni bifurcación.
             </p>
           </div>
 
@@ -220,7 +220,7 @@ export default function LegalPage() {
               <span>2.4. Aportes Voluntarios y Donaciones Comunitarias</span>
             </div>
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans">
-              Las colaboraciones monetarias efectuadas a través de plataformas como Cafecito representan contribuciones voluntarias para apoyar las horas de desarrollo e infraestructura del proyecto de software libre. En ningún caso constituyen la compra de un producto comercial, el pago de una licencia de software ni confieren derecho a exigir soporte técnico con acuerdos de nivel de servicio (SLA).
+              Las colaboraciones monetarias efectuadas a través de plataformas como Cafecito representan contribuciones voluntarias para apoyar las horas de desarrollo e infraestructura del proyecto. En ningún caso constituyen la compra de un producto comercial, el pago de una licencia de software ni confieren derecho a exigir soporte técnico con acuerdos de nivel de servicio (SLA).
             </p>
           </div>
         </section>
@@ -231,7 +231,7 @@ export default function LegalPage() {
             ¿Consultas Legales o Reporte de Privacidad?
           </h3>
           <p className="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto">
-            Al ser un proyecto transparente de código abierto, cualquier inquietud, solicitud de aclaración técnica o sugerencia sobre privacidad puede canalizarse abiertamente en el repositorio oficial.
+            Al ser un proyecto transparente con código fuente disponible, cualquier inquietud, solicitud de aclaración técnica o sugerencia sobre privacidad puede canalizarse abiertamente en el repositorio oficial.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
             <a

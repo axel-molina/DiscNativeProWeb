@@ -52,7 +52,7 @@ export default function Footer() {
             </div>
 
             <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed max-w-sm">
-              Suite DJ profesional {latestVersion} de código abierto para macOS, Windows y Linux. Desarrollada en C++20 y JUCE 8 con Sampler Launchpad, YouTube Video DJ, SoundCloud, biblioteca USB, AutoMix inteligente y soporte para controladoras MIDI.
+              Suite DJ profesional {latestVersion} con código fuente disponible en GitHub para macOS, Windows y Linux. Desarrollada en C++20 y JUCE 8 con Sampler Launchpad, YouTube Video DJ, SoundCloud, biblioteca USB, AutoMix inteligente y soporte para controladoras MIDI.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -75,7 +75,7 @@ export default function Footer() {
                 <Youtube className="w-4 h-4" />
               </a>
               <span className="text-xs font-mono text-zinc-500">
-                Licencia Open Source comunitaria
+                Código en GitHub · Todos los derechos reservados
               </span>
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function Footer() {
             </Link>
           </div>
           <div className="text-center sm:text-right text-[11px] text-zinc-600">
-            Aviso: DiscNativePro es un desarrollo independiente de código abierto. Pioneer DJ, DDJ, Hercules, Rekordbox, Serato, SoundCloud y YouTube son marcas de sus respectivos titulares.
+            Aviso: DiscNativePro es un desarrollo independiente con código fuente disponible en GitHub. Pioneer DJ, DDJ, Hercules, Rekordbox, Serato, SoundCloud y YouTube son marcas de sus respectivos titulares.
           </div>
         </div>
       </div>
